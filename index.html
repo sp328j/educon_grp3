@@ -239,6 +239,18 @@
     .comment-text { margin:0; white-space:pre-wrap; line-height:1.65; font-size:14px; }
     .empty-comments { margin:14px 0 0; padding:16px; border:1px dashed var(--line); color:var(--muted); background:#fffdf8; font-size:13.5px; }
 
+    .padlet-desc { margin:0 0 18px; color:var(--muted); line-height:1.7; font-size:14px; }
+    .padlet-link {
+      display:flex; align-items:center; justify-content:center;
+      min-height:56px; padding:16px 18px;
+      background:var(--steel); color:#fff; text-decoration:none;
+      border:2px solid var(--ink); font-weight:900; letter-spacing:-.02em;
+      box-shadow:4px 4px 0 rgba(23,33,43,.16);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .padlet-link:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 rgba(23,33,43,.18); background:var(--red); }
+    .padlet-url { margin-top:14px; padding:10px 12px; background:#fffdf8; border:1px solid var(--line); color:var(--muted); font-size:12px; word-break:break-all; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
   </style>
 </head>
 <body>
@@ -346,20 +358,14 @@
         <div class="qr-url" id="qr-url">index.html</div>
       </article>
 
-      <section class="comment-board" aria-labelledby="comment-title">
+      <section class="comment-board padlet-board" aria-labelledby="comment-title">
         <p class="panel-label">FREE COMMENT BOARD</p>
         <h2 class="panel-title" id="comment-title">자유 코멘트 게시판</h2>
-        <form class="comment-form" id="comment-form">
-          <input type="text" id="comment-name" maxlength="20" placeholder="이름" aria-label="이름">
-          <textarea id="comment-text" maxlength="500" placeholder="코멘트를 입력하세요" aria-label="코멘트 내용" required></textarea>
-          <button type="submit">등록</button>
-        </form>
-        <div class="comment-tools">
-          <span class="comment-count" id="comment-count">코멘트 0개</span>
-          <button type="button" class="clear-comments" id="clear-comments">전체 삭제</button>
-        </div>
-        <ul class="comment-list" id="comment-list"></ul>
-        <div class="empty-comments" id="empty-comments">아직 등록된 코멘트가 없습니다. 첫 의견을 남겨보세요.</div>
+        <p class="padlet-desc">의견, 질문, 발표 피드백은 아래 Padlet 게시판에 자유롭게 남겨주세요.</p>
+        <a class="padlet-link" href="https://padlet.com/mariebeatman/any-comments-4k9za9zlzibrzole" target="_blank" rel="noopener noreferrer" aria-label="Padlet 코멘트 게시판 새 창에서 열기">
+          Padlet 코멘트 게시판 열기 →
+        </a>
+        <div class="padlet-url">https://padlet.com/mariebeatman/any-comments-4k9za9zlzibrzole</div>
       </section>
     </section>
 
@@ -376,60 +382,6 @@
         qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=12&data=' + encodeURIComponent(currentUrl);
         qrUrl.textContent = currentUrl;
       }
-
-      const storageKey = 'constructionAccidentComments_v1';
-      const form = document.getElementById('comment-form');
-      const nameInput = document.getElementById('comment-name');
-      const textInput = document.getElementById('comment-text');
-      const list = document.getElementById('comment-list');
-      const empty = document.getElementById('empty-comments');
-      const count = document.getElementById('comment-count');
-      const clearBtn = document.getElementById('clear-comments');
-
-      function escapeHtml(value) {
-        return value.replace(/[&<>'"]/g, function(ch) {
-          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]);
-        });
-      }
-      function loadComments() {
-        try { return JSON.parse(localStorage.getItem(storageKey)) || []; }
-        catch (e) { return []; }
-      }
-      function saveComments(comments) {
-        localStorage.setItem(storageKey, JSON.stringify(comments));
-      }
-      function renderComments() {
-        const comments = loadComments();
-        list.innerHTML = comments.map(function(item){
-          return '<li class="comment-item">'
-            + '<div class="comment-meta"><span class="comment-name">' + escapeHtml(item.name) + '</span><span>' + escapeHtml(item.date) + '</span></div>'
-            + '<p class="comment-text">' + escapeHtml(item.text) + '</p>'
-            + '</li>';
-        }).join('');
-        empty.style.display = comments.length ? 'none' : 'block';
-        count.textContent = '코멘트 ' + comments.length + '개';
-      }
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        const text = textInput.value.trim();
-        if (!text) return;
-        const comments = loadComments();
-        comments.unshift({
-          name: nameInput.value.trim() || '익명',
-          text: text,
-          date: new Date().toLocaleString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })
-        });
-        saveComments(comments);
-        textInput.value = '';
-        renderComments();
-      });
-      clearBtn.addEventListener('click', function(){
-        if (confirm('등록된 코멘트를 모두 삭제할까요?')) {
-          localStorage.removeItem(storageKey);
-          renderComments();
-        }
-      });
-      renderComments();
     })();
   </script>
 
