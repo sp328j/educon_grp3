@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설공종별 재해 사례: 도로 공사</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        safetyYellow: '#FBBF24',
+                        safetyOrange: '#F97316',
+                        roadBlack: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 도로 안전띠 스타일 데코레이션 */
+        .safety-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                #f59e0b,
+                #f59e0b 15px,
+                #111827 15px,
+                #111827 30px
+            );
+        }
+        /* 스크롤 시 부드러운 노출을 위한 클래스 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans leading-relaxed selection:bg-safetyYellow selection:text-roadBlack">
+
+    <!-- 상단 고정 네비게이션 -->
+    <nav class="fixed top-0 left-0 right-0 bg-roadBlack/95 text-white z-50 shadow-md border-b-2 border-safetyYellow">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#intro" class="flex items-center space-x-2 font-black text-lg tracking-wider text-safetyYellow">
+                <span>🚧 ROAD SAFETY REPORT</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
+                <a href="#features" class="hover:text-safetyYellow transition">1. 개요 & 특징</a>
+                <a href="#types" class="hover:text-safetyYellow transition">2. 재해유형</a>
+                <a href="#cases" class="hover:text-safetyYellow transition">3. 대표사례</a>
+                <a href="#analysis" class="hover:text-safetyYellow transition">4. 4M 분석</a>
+                <a href="#prevention" class="hover:text-safetyYellow transition">5. 예방대책</a>
+                <a href="#checklist" class="hover:text-safetyYellow transition">6. 체크리스트</a>
+                <a href="#conclusion" class="hover:text-safetyYellow transition">결론</a>
+            </div>
+            <div class="md:hidden">
+                <span class="text-xs text-slate-400">오원준 발표자료</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- [1. 메인 히어로 섹션] -->
+    <header id="intro" class="relative pt-32 pb-24 bg-roadBlack text-white overflow-hidden">
+        <!-- 배경 도로 차선 라인 데코레이션 -->
+        <div class="absolute inset-x-0 bottom-0 h-4 safety-stripe"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-safetyOrange/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <!-- 안전 표지판 심볼 스타일 데코 -->
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-safetyYellow text-roadBlack font-black rounded-lg transform rotate-45 mb-6 shadow-lg border-2 border-white">
+                <span class="transform -rotate-45 text-2xl">⚠️</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
+                건설공종별 재해 사례: <span class="text-safetyYellow">도로 공사</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-safetyOrange font-bold mb-8">
+                차량 충돌 및 포장장비 협착 사고를 중심으로
+            </p>
+            
+            <div class="bg-slate-800/80 border-l-4 border-safetyOrange p-6 rounded-r-lg max-w-3xl mx-auto text-left mb-8 backdrop-blur-sm">
+                <p class="text-base md:text-lg text-slate-200 font-medium">
+                    “도로 공사는 일반 차량, 건설장비, 작업자가 같은 공간에 존재하기 때문에 공사장 내부 위험과 외부 교통 위험이 동시에 발생하는 고위험 공종이다.”
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
+                <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-700 text-slate-300">🚦 작업구역 분리</span>
+                <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-700 text-slate-300">🚧 교통안전시설</span>
+                <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-700 text-slate-300">💡 시인성 확보</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-16 space-y-24">
+
+        <!-- [2. 도로 공사의 개요와 특징] -->
+        <section id="features" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-black mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">01.</span> 도로 공사의 개요와 특징
+            </h2>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md border border-slate-200 mb-10">
+                <p class="text-base md:text-lg mb-6 text-slate-700 leading-relaxed">
+                    도로 공사는 신설 도로, 도로 확장, 포장 보수, 차선도색, 배수시설 정비, 교량 접속부 보수, 관로 매설 등 매우 다양한 작업을 포함합니다. 
+                    일반적인 건축공사와 달리 <strong>차량 통행이 실제로 이루어지는 도로 공간과 아주 가까운 곳에서 진행</strong>되므로, 작업자는 건설장비 위협뿐만 아니라 시속 수십 km로 질주하는 일반 차량의 돌진 위험에 끊임없이 노출되는 극한의 위험 환경입니다.
+                </p>
+                <div class="h-2 safety-stripe rounded"></div>
+            </div>
+
+            <!-- 특징 카드 7가지 -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">🛣️</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">공사구역 인접</h3>
+                    <p class="text-sm text-slate-600">실제 차량이 통행하는 차선 바로 옆에서 공사가 무방비로 진행됨.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">👥</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">복합적 공존</h3>
+                    <p class="text-sm text-slate-600">작업자, 주행 중인 일반 차량, 굴착기 등 대형 건설장비가 한 공간에 뒤섞임.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">🌙</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">야간작업 위험</h3>
+                    <p class="text-sm text-slate-600">시인성이 급격하게 감소하여 경보등이나 유도선이 식별되지 않음.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">🔀</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">차로 통제 병목</h3>
+                    <p class="text-sm text-slate-600">차로가 좁아지며 병목현상이 발생하고, 운전자 급제동/급차선변경 유발.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">🚚</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">대형장비 사각지대</h3>
+                    <p class="text-sm text-slate-600">롤러, 피니셔, 덤프트럭 등 대규모 중장비는 운전원의 사각지대가 매우 넓음.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition">
+                    <div class="text-3xl mb-3">🔄</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">동선 혼재</h3>
+                    <p class="text-sm text-slate-600">이동식 공사의 특성상 장비의 작업반경과 인력의 작업동선 분리가 극도로 어려움.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-roadBlack hover:shadow-md transition sm:col-span-2 lg:col-span-1">
+                    <div class="text-3xl mb-3">🕳️</div>
+                    <h3 class="font-bold text-lg mb-2 text-roadBlack">지하 매설 지장물</h3>
+                    <p class="text-sm text-slate-600">가스관, 고압선, 상하수도관 등 눈에 보이지 않는 위험이 도로 바로 밑에 산재함.</p>
+                </div>
+            </div>
+
+            <!-- 핵심 강조 박스 -->
+            <div class="bg-roadBlack text-white p-6 rounded-xl border-l-8 border-safetyYellow text-center font-bold text-lg md:text-xl">
+                📢 “도로 공사의 핵심 위험은 작업자가 차량과 장비 사이에 끼인 채 무방비로 놓인다는 점이다.”
+            </div>
+        </section>
+
+
+        <!-- [3. 도로 공사의 주요 재해 유형] -->
+        <section id="types" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">02.</span> 도로 공사 주요 재해 유형
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 유형 1 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">🚗</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">차량 충돌 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">일반 주행 차량이 전방 차선 통제 구역을 인지하지 못하고 작업구역으로 직접 돌진하는 사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 예고표지 부족, 야간 시인성 저하, 방호차량 미배치, 졸음운전
+                    </div>
+                </div>
+
+                <!-- 유형 2 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">🏗️</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">장비 협착·충돌 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">굴착기, 덤프트럭, 피니셔 등 대형 장비의 회전 또는 후진 범위 내에서 인력 작업자가 치이는 사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 장비 사각지대 진입, 신호수 미배치, 후진 작업 경보 부재, 작업반경 내 임의출입
+                    </div>
+                </div>
+
+                <!-- 유형 3 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">🚜</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">포장장비 깔림 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">포설기나 다짐용 롤러장비가 계속해서 전·후진을 반복하는 과정에서 지상 작업자가 장비 바닥에 깔리는 치명적 중대사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 장비 급후진, 작업자 위치 미확인, 좁은 공정 구간 내 장비-작업자 동선 무차별 혼재
+                    </div>
+                </div>
+
+                <!-- 유형 4 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">🧗</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">추락 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">도로 개설 및 보수를 위해 조성된 고지대 교량, 옹벽, 깊은 터파기 배수로, 열린 맨홀 틈새로 작업자가 굴러 떨어지는 사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 안전난간 미설치, 개구부 가덮개 고정 미흡, 야간 가시성 불량으로 인한 발 디딤 실수
+                    </div>
+                </div>
+
+                <!-- 유형 5 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">📐</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">낙하·비래 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">아스팔트 절삭기 파편이나 상부 고지대 교량 상판 자재, 공사 부품이 바람에 날리거나 아래 지상 작업자 머리로 낙하하는 사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 방호망 미설치, 개인보호구(안전모 등) 미착용, 장비 회전 날 방호덮개 불량
+                    </div>
+                </div>
+
+                <!-- 유형 6 -->
+                <div class="bg-white p-6 rounded-xl shadow border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">⚡</span>
+                            <h3 class="font-extrabold text-lg text-roadBlack">지하매설물 파손 사고</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">터파기 굴착 중 땅밑에 깔려 있던 위험 물질(도시가스, 고압 송전선, 주요 관로)을 굴착기 버킷으로 직접 파손시키는 대형 폭발/정전 유발 사고.</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded text-xs border-l-2 border-safetyOrange text-slate-700">
+                        <strong>주요 원인:</strong> 지하 지장물 현황 탐사 누락, 육안 확인용 시험굴착 생략, 실제와 어긋난 도면 정보에 맹종
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- [4. 대표 재해 사례 3선] -->
+        <section id="cases" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">03.</span> 실제 도로 공사 재해 사례 및 분석
+            </h2>
+
+            <div class="space-y-16">
+                <!-- 사례 1: 국도 도로보수 공사 중 차량 돌진 -->
+                <div class="bg-white rounded-xl shadow-lg border-t-8 border-safetyOrange overflow-hidden">
+                    <div class="p-6 bg-roadBlack text-white flex justify-between items-center flex-wrap gap-2">
+                        <h3 class="text-xl md:text-2xl font-black text-safetyYellow">대표사례 1. 국도 도로보수 중 일반 주행 차량 돌진</h3>
+                        <span class="px-3 py-1 bg-safetyOrange text-xs font-bold rounded">대한민국 (충북 음성군, 2022)</span>
+                    </div>
+                    <div class="p-8 space-y-6">
+                        <!-- 구조화 1: 사고 상황 -->
+                        <div>
+                            <h4 class="font-bold text-lg text-roadBlack mb-2 flex items-center">🚨 사고 상황</h4>
+                            <p class="text-slate-700 text-sm md:text-base">
+                                야간 시간대 왕복 4차로 국도 도로의 노면 포장 보수 작업을 위해 3, 4차로를 가로막고 라바콘을 늘어놓은 채 소규모 현장 정리 작업 중이었다. 직선 구간을 과속으로 질주하던 일반 차량이 전방 통제 상황을 졸음운전 등의 이유로 미처 발견하지 못하고, 제동 없이 라바콘 방벽을 돌파해 정지 작업 중이던 무방비 상태의 근로자를 직접 들이받아 중대재해(사망)를 발생시켰다.
+                            </p>
+                        </div>
+
+                        <!-- 구조화 2: 사고 발생 과정 -->
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-sm text-roadBlack mb-3">📍 사고 발생 단계적 경로</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-center font-bold">
+                                <div class="bg-white p-3 border border-slate-200 rounded">1. 공사구간 전방 예고 표지판 간격 부족</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded">2. 야간 운전자의 통제 구역 인지 지연</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded">3. 감속 단계 생략한 채 라바콘 구역 진입</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded text-red-600">4. 대피로 없는 작업 공간 내 작업자 충격</div>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 3 & 4: 원인 분석 -->
+                        <div class="grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h5 class="font-bold text-red-600 mb-1">🔍 직접 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 공사지점 전방의 도로표지 등 경고 장치가 터무니없이 부족함</li>
+                                    <li>• 라바콘에만 의존한 통제선으로 차량의 물리적 진입 저지 불가</li>
+                                    <li>• 야간 운전자 눈에 보일 대형 유도 조명이나 전방 신호수 부재</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-red-800 pl-4">
+                                <h5 class="font-bold text-red-800 mb-1">🏛️ 근본 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 사전에 발주된 종합적 도로 교통 통제 처리 계획의 형식적 수립</li>
+                                    <li>• 작업 중 실시간 도로 안전 상태를 통제할 신호 전담 조율자 누락</li>
+                                    <li>• 후방 차량 충격을 대신 흡수해 줄 물리적 충격 흡수 차량(TMA) 미확보</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 5: 예방대책 -->
+                        <div class="bg-amber-50 border border-amber-200 p-5 rounded-lg text-sm">
+                            <h4 class="font-bold text-amber-800 mb-2">🛡️ 완벽한 현장 재발방지대책</h4>
+                            <ul class="grid md:grid-cols-2 gap-2 text-slate-700">
+                                <li>✔️ <strong>광대역 전방 예고:</strong> 공사구간 최소 1km, 500m 전방에 선제적 경고 전광판 배치</li>
+                                <li>✔️ <strong>강력한 강제 분리:</strong> 고정식 PE방호벽 설치 및 뒤편에 쿠션 장착 방호차량(TMA) 우선 배치</li>
+                                <li>✔️ <strong>야간 고광도 유도:</strong> 고광도 LED 윙카 호스, 싸이카 경광등, 대형 이동식 조명 타워 상시 가동</li>
+                                <li>✔️ <strong>대피 공간 마련:</strong> 노면 작업 중 비상경보 발생 시 작업자가 몸을 숨길 수 있는 갓길 내 안전 구역 확보</li>
+                            </ul>
+                        </div>
+
+                        <!-- 구조화 6: 발표 포인트 -->
+                        <div class="p-4 bg-slate-900 text-slate-100 rounded text-center text-sm font-semibold">
+                            💡 <span class="text-safetyYellow">발표 포인트:</span> “차량 돌진 사고는 단순한 외지 졸음운전자의 과실이 아닙니다. 졸음운전 중인 무의식 상태의 운전자조차 공사 사실을 감각적으로 발견해 차를 돌리도록 시인성을 극대화하고 물리적으로 차를 가로막는 방호체계 구축이 본질입니다.”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 사례 2: 포장공사 중 롤러 협착 및 깔림 사고 -->
+                <div class="bg-white rounded-xl shadow-lg border-t-8 border-safetyOrange overflow-hidden">
+                    <div class="p-6 bg-roadBlack text-white flex justify-between items-center flex-wrap gap-2">
+                        <h3 class="text-xl md:text-2xl font-black text-safetyYellow">대표사례 2. 아스팔트 포장 중 진동 롤러 협착 및 깔림</h3>
+                        <span class="px-3 py-1 bg-safetyOrange text-xs font-bold rounded">대한민국 (경기도 화성시, 2023)</span>
+                    </div>
+                    <div class="p-8 space-y-6">
+                        <!-- 구조화 1: 사고 상황 -->
+                        <div>
+                            <h4 class="font-bold text-lg text-roadBlack mb-2 flex items-center">🚨 사고 상황</h4>
+                            <p class="text-slate-700 text-sm md:text-base">
+                                국도 확장 노선에서 신규 도로 아스팔트 다짐 작업을 진행 중이었다. 앞선 피니셔가 뿜어낸 고온의 아스콘 포설면을 고르게 펴기 위해 대형 10톤 진동 타이어롤러가 무한 전·후진 다짐 반복 작업을 하던 과정에서, 장비 후방 갓길 인근 포장 끝자락을 정리하던 수작업 인력이 장비의 사각지대에 가려 운전원의 눈에 띄지 못했다. 장비가 후진하면서 작업자를 뒤늦게 덮쳐 롤러 바퀴에 깔려 사망하는 재해가 초래되었다.
+                            </p>
+                        </div>
+
+                        <!-- 구조화 2: 사고 발생 과정 -->
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-sm text-roadBlack mb-3">📍 사고 발생 단계적 경로</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-center font-bold">
+                                <div class="bg-white p-3 border border-slate-200 rounded">1. 열기로 가득한 작업 환경 내 피니셔-롤러 연동 작업</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded">2. 기계 주변 포장 정밀 보정 위해 작업자 위험 반경 내 진입</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded">3. 진동롤러 운전원의 하부 후방 사각지대 주시 불가</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded text-red-600">4. 전담 유도원 부재 상태에서 기계 급후진 시 충돌 및 깔림</div>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 3 & 4: 원인 분석 -->
+                        <div class="grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h5 class="font-bold text-red-600 mb-1">🔍 직접 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 롤러 내부의 시야 설계 결함으로 인한 후방 및 갓길 전단 사각지대 진입</li>
+                                    <li>• 장비 이동의 수시 후진이 예측됨에도 뒤를 제어해 줄 전담 신호수 미지정</li>
+                                    <li>• 장비의 후방 감지 센서 및 고화질 카메라 등의 보조 시각 장비 고장 방치</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-red-800 pl-4">
+                                <h5 class="font-bold text-red-800 mb-1">🏛️ 근본 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 덤프-피니셔-롤러가 한꺼번에 유기적으로 얽히는 협소 구간의 동선 계획 미비</li>
+                                    <li>• 장비 운전자와 도로 지상 보조 도보 작업자 간의 수신호 조율 절차 생략</li>
+                                    <li>• 작업 전 위험 요소를 전파하는 안전 TBM 단계에서 장비 이동 간 격리 합의 생략</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 5: 예방대책 -->
+                        <div class="bg-amber-50 border border-amber-200 p-5 rounded-lg text-sm">
+                            <h4 class="font-bold text-amber-800 mb-2">🛡️ 완벽한 현장 재발방지대책</h4>
+                            <ul class="grid md:grid-cols-2 gap-2 text-slate-700">
+                                <li>✔️ <strong>강제적인 동선 분리:</strong> 장비 가동 면적과 인력 정밀 포장면 정리 작업의 물리적 시간차 운영</li>
+                                <li>✔️ <strong>안전 거리 센싱:</strong> 지능형 AI 카메라 및 작업자 무선 스마트 태그(근접 경보 장치) 가동 의무화</li>
+                                <li>✔️ <strong>전담 신호수 실시간 무전:</strong> 무장비 롤러 운전사와 신호수가 실시간 무전 이어폰 착용 후 조율</li>
+                                <li>✔️ <strong>장비별 제한구역 펜스:</strong> 주행 기계 양옆으로 임시 가이드라인 설치를 통한 근로자 부주의 차단</li>
+                            </ul>
+                        </div>
+
+                        <!-- 구조화 6: 발표 포인트 -->
+                        <div class="p-4 bg-slate-900 text-slate-100 rounded text-center text-sm font-semibold">
+                            💡 <span class="text-safetyYellow">발표 포인트:</span> “다짐 롤러는 속도가 매우 느립니다. '피하면 되겠지'하는 작업자의 부주의를 탓하기 이전에, 엄청난 기계 소음과 시공에 시야가 매몰된 근로자가 후진하는 고중량 장비를 미처 발견하지 못할 수 있음을 인정하고, 통신 체계와 접근 통제를 의무화해야 합니다.”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 사례 3: 도로 굴착 중 지하매설 가스관 파손 사고 -->
+                <div class="bg-white rounded-xl shadow-lg border-t-8 border-safetyOrange overflow-hidden">
+                    <div class="p-6 bg-roadBlack text-white flex justify-between items-center flex-wrap gap-2">
+                        <h3 class="text-xl md:text-2xl font-black text-safetyYellow">대표사례 3. 도로 터파기용 굴착 작업 중 고압 도시가스 배관 파손</h3>
+                        <span class="px-3 py-1 bg-safetyOrange text-xs font-bold rounded">대한민국 (서울시 강남구, 2021)</span>
+                    </div>
+                    <div class="p-8 space-y-6">
+                        <!-- 구조화 1: 사고 상황 -->
+                        <div>
+                            <h4 class="font-bold text-lg text-roadBlack mb-2 flex items-center">🚨 사고 상황</h4>
+                            <p class="text-slate-700 text-sm md:text-base">
+                                하수관로 노후화 교체를 위한 도심지 도로 굴착 터파기 작업 도중이었다. 지하 지장물 매설 현황 도면에 표기된 지하 1.5m 깊이보다 훨씬 얕은 지점(약 0.9m)에 임의 매설되어 있던 고압 도시가스 강관을 굴착기 버킷이 강하게 가라앉히며 버킷 측면 이빨로 직접 충격하여 손상시켰다. 가스가 분출하면서 일대 차로가 수 시간 동안 완전 통제되고 주변 건물 상권 가스 공급이 정지되는 심각한 도시 환경 위험 사태가 일어났다.
+                            </p>
+                        </div>
+
+                        <!-- 구조화 2: 사고 발생 과정 -->
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-sm text-roadBlack mb-3">📍 사고 발생 단계적 경로</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-center font-bold">
+                                <div class="bg-white p-3 border border-slate-200 rounded">1. 지하지장물 배관 배치 도면 조사 분석</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded">2. 실제 지중 관로 매설 변위 측정 생략</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded text-amber-600">3. 가스 유관 안전기관 참관 없는 굴착기 가동</div>
+                                <div class="bg-white p-3 border border-slate-200 rounded text-red-600">4. 얕은 배관 버킷 충격 및 도시가스 폭발 위험 누출</div>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 3 & 4: 원인 분석 -->
+                        <div class="grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h5 class="font-bold text-red-600 mb-1">🔍 직접 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 도면 정보 오차를 배제하고 무작정 굴착 속도를 위해 중기계로 직접 작업 가행</li>
+                                    <li>• 육안 매설 깊이를 탐색하기 위한 유도 시험 굴착(인력 파기) 완전 생략</li>
+                                    <li>• 가스 배관 밀착 반경 내 굴착 시 안전 가이드 유도원 배치 미이행</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-red-800 pl-4">
+                                <h5 class="font-bold text-red-800 mb-1">🏛️ 근본 원인</h5>
+                                <ul class="space-y-1 text-slate-700">
+                                    <li>• 도면 불일치가 빈번한 하부 노후 도로 아래 매설 가스 지장물 데이터 갱신 부실</li>
+                                    <li>• 발주 기관과 해당 지역 도시가스공사 간 현장 검수 입회 및 안전조율 결여</li>
+                                    <li>• 장비 운전원에 대해 지중 위험물 가스 노출 한계선 교육 미비</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 구조화 5: 예방대책 -->
+                        <div class="bg-amber-50 border border-amber-200 p-5 rounded-lg text-sm">
+                            <h4 class="font-bold text-amber-800 mb-2">🛡️ 완벽한 현장 재발방지대책</h4>
+                            <ul class="grid md:grid-cols-2 gap-2 text-slate-700">
+                                <li>✔️ <strong>시험 굴착 선행 필수:</strong> 굴착 작업 시작 전 지장물 추정 지점 양옆으로 소형 시험 횡굴착(Hand-digging) 실시</li>
+                                <li>✔️ <strong>유관 배관 점검 입회:</strong> 도시가스공사 안전 관리자를 현장에 직접 동반 입회시킨 상태로 굴착 진행</li>
+                                <li>✔️ <strong>지중 전용 레이저 탐지:</strong> 매설 파이프용 GPR 지하 물체 레이다 탐지 시스템 장비 사전 가동</li>
+                                <li>✔️ <strong>굴착 버킷 이빨 보완:</strong> 가스 배관 주변 굴착 시 날카로운 쇠 이빨 대신 보호 커버 또는 연성 특수 바가지 활용</li>
+                            </ul>
+                        </div>
+
+                        <!-- 구조화 6: 발표 포인트 -->
+                        <div class="p-4 bg-slate-900 text-slate-100 rounded text-center text-sm font-semibold">
+                            💡 <span class="text-safetyYellow">발표 포인트:</span> “도로 위에서 하는 공사라고 아래를 보지 못하면 대형 폭발이나 시 전체 마비 사고로 이뤄집니다. 도면만을 신뢰하는 구태의연한 관행을 지우고, 직접 땅을 조금 파서 눈으로 배관을 먼저 꺼내 확인하는 시험 굴착을 제도화해야 공정을 지킬 수 있습니다.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- [5. 사고 원인 종합 분석 - 4M 분석] -->
+        <section id="analysis" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">04.</span> 사고 원인 종합 분석 (4M)
+            </h2>
+            
+            <p class="text-slate-600 mb-6 text-sm md:text-base">
+                도로공사 재해 발생 과정의 유기적인 요소들을 과학적으로 분류하기 위하여 인간, 기계, 환경, 관리의 4가지 관점(4M)에서 정밀 원인을 도출하였습니다.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Man -->
+                <div class="bg-white border-t-8 border-safetyYellow rounded-lg shadow p-6">
+                    <h3 class="font-black text-xl mb-4 text-roadBlack flex items-center">
+                        <span class="mr-2">👤</span> Man (인간)
+                    </h3>
+                    <ul class="space-y-2 text-slate-600 text-xs md:text-sm">
+                        <li>• 작업자가 장비 사각지대 및 이동 궤적 내에 임의 진입</li>
+                        <li>• 조급한 공정 완료를 위한 임의 안전 장치 가이드 미준수</li>
+                        <li>• 안전 신호수의 실시간 안내 시그널 불이행 및 신호 오해</li>
+                        <li>• 덥거나 습한 기후에서 고시인성 반사 조끼 및 보호구 임의 탈착</li>
+                    </ul>
+                </div>
+
+                <!-- Machine -->
+                <div class="bg-white border-t-8 border-safetyOrange rounded-lg shadow p-6">
+                    <h3 class="font-black text-xl mb-4 text-roadBlack flex items-center">
+                        <span class="mr-2">🚜</span> Machine (기계)
+                    </h3>
+                    <ul class="space-y-2 text-slate-600 text-xs md:text-sm">
+                        <li>• 진동롤러, 피니셔 등 대형 장비의 대규모 바닥 및 하부 사각지대 설계</li>
+                        <li>• 장비 후진 경보장치, 경고등, 무선 센서 미장착 및 고장 누락</li>
+                        <li>• 협소 도로 환경에서 덤프트럭 흙털기 등 중장비 상호 충돌 요인</li>
+                        <li>• 기계 버킷 장비에 보호 보호구가 장착되지 않아 고압 배관 파손</li>
+                    </ul>
+                </div>
+
+                <!-- Media -->
+                <div class="bg-white border-t-8 border-roadBlack rounded-lg shadow p-6">
+                    <h3 class="font-black text-xl mb-4 text-roadBlack flex items-center">
+                        <span class="mr-2">🌐</span> Media (환경)
+                    </h3>
+                    <ul class="space-y-2 text-slate-600 text-xs md:text-sm">
+                        <li>• 실제 차선 차량 통행 공간과 공사 작업 면적의 극단적 근접성</li>
+                        <li>• 야간 차선 도색 및 포장 공사 시 가로등 부재로 시인성 완전 저하</li>
+                        <li>• 기상 악화 시 졸음운전 차량 및 우천 미끄러짐으로 제어 상실</li>
+                        <li>• 장비 밀착 소음으로 작업원 간 수신호 또는 대화 단절 촉진</li>
+                    </ul>
+                </div>
+
+                <!-- Management -->
+                <div class="bg-white border-t-8 border-red-600 rounded-lg shadow p-6">
+                    <h3 class="font-black text-xl mb-4 text-roadBlack flex items-center">
+                        <span class="mr-2">📁</span> Management (관리)
+                    </h3>
+                    <ul class="space-y-2 text-slate-600 text-xs md:text-sm">
+                        <li>• 형식적인 교통관리 계획서 작성을 통한 현장 통제 배치 누락</li>
+                        <li>• 방호벽 및 충격흡수차량(TMA) 등의 안전 예산 집행 기피</li>
+                        <li>• 작업 시작 전 위험 예측(TBM) 단계의 장비 접근 구역 공유 지연</li>
+                        <li>• 도면과 도로 밑 매설 안전 지장물 간 사전 탐사 의무 절차 미수행</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- [8. 도로 공사 재해 예방대책 종합] -->
+        <section id="prevention" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">05.</span> 도로 공사 재해 예방대책 종합
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 대책 1 -->
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                    <div class="p-4 bg-roadBlack text-safetyYellow font-bold text-center">
+                        🚗 교통관리 대책
+                    </div>
+                    <ul class="p-6 space-y-3 text-slate-700 text-sm">
+                        <li>• 공사지점 최소 1km 전방부터 순차적 예고 전광판 설치</li>
+                        <li>• 감속 유도를 위한 차량 안내판 및 서행 싸이카 배치</li>
+                        <li>• 시선 유도용 라바콘 조밀 설치 및 주황색 임시 차선 도색</li>
+                        <li>• 완충 충격흡수 차량(TMA)을 작업구역 후방에 상시 고정 정차</li>
+                        <li>• 야간 LED 전광 장치, 싸이키 유도 경보등 가로등 가동</li>
+                    </ul>
+                </div>
+
+                <!-- 대책 2 -->
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                    <div class="p-4 bg-roadBlack text-safetyYellow font-bold text-center">
+                        🚜 장비관리 대책
+                    </div>
+                    <ul class="p-6 space-y-3 text-slate-700 text-sm">
+                        <li>• 롤러, 피니셔 등 사각지대 전방향 AI 후방 카메라 장착</li>
+                        <li>• 기계 전·후진 작동 시 상시 자동 경보음 및 경광등 가동</li>
+                        <li>• 장비 작업반경 내 임시 가이드 바리케이드 설치 의무화</li>
+                        <li>• 운전자와 노면 근로자 간 전용 주파수 소형 무전 장비 지급</li>
+                        <li>• 수시 점검을 통해 보조 제동 장치 및 경고 작동 수리 보증</li>
+                    </ul>
+                </div>
+
+                <!-- 대책 3 -->
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                    <div class="p-4 bg-roadBlack text-safetyYellow font-bold text-center">
+                        🧗 작업자 안전 대책
+                    </div>
+                    <ul class="p-6 space-y-3 text-slate-700 text-sm">
+                        <li>• 고휘도 형광 반사 조끼 및 스마트 충격 감지 안전모 상시 착용</li>
+                        <li>• 기계 및 주행 차량에 대비할 수 있는 비상 탈출 갓길 격리공간 확보</li>
+                        <li>• 사각지대 안전 가이드라인에 대한 정기 일일 교육 실시</li>
+                        <li>• 야간작업 시 자체 발광 고휘도 LED 밴드 어깨 부착 의무화</li>
+                        <li>• 작업 시작 전 당일 장비 운전 경로와 작업자 구획 확정 TBM</li>
+                    </ul>
+                </div>
+
+                <!-- 대책 4 -->
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                    <div class="p-4 bg-roadBlack text-safetyYellow font-bold text-center">
+                        📋 관리적 대책
+                    </div>
+                    <ul class="p-6 space-y-3 text-slate-700 text-sm">
+                        <li>• 시뮬레이션을 동반한 정밀 교통 흐름 통제 계획 수립</li>
+                        <li>• 위험성 평가 제도를 현장 특성에 따라 실시간 변경 시행</li>
+                        <li>• 작업 공간과 차선을 고강도 임시 콘크리트 배리어로 완전 분리</li>
+                        <li>• 자격이 보증된 안전 통제 요원 및 정규 신호수 배치 훈련</li>
+                        <li>• 수시 안전 보증 순찰 및 위반 작업자에 대한 퇴출 조치 규정</li>
+                    </ul>
+                </div>
+
+                <!-- 대책 5 -->
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden sm:col-span-2 lg:col-span-1">
+                    <div class="p-4 bg-roadBlack text-safetyYellow font-bold text-center">
+                        ⚡ 지하매설물 관리 대책
+                    </div>
+                    <ul class="p-6 space-y-3 text-slate-700 text-sm">
+                        <li>• 해당 구역 지중 가스, 전력, 상수도 매설 상세 도면 수집 및 분석</li>
+                        <li>• 가스안전공사 등 가재 지장물 안전 관리 요원 입회 조율</li>
+                        <li>• 현장 땅을 인력으로 직접 조심히 파헤치는 시험 굴착 전면 우선 수행</li>
+                        <li>• 도면상 배관 경계 한계선 도래 시 장비 사용 제한 및 인력 파기 이행</li>
+                        <li>• 배관 주변 기계 사용 시 버킷 보호 완충 우레탄 덧판 부착 가동</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- [9. 도로 공사 안전관리 체크리스트] -->
+        <section id="checklist" class="reveal scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 border-l-8 border-safetyOrange pl-4 text-roadBlack flex items-center">
+                <span class="mr-3 text-2xl text-safetyOrange">06.</span> 도로 공사 안전관리 체크리스트
+            </h2>
+
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200">
+                <div class="p-6 bg-roadBlack text-white">
+                    <h3 class="font-extrabold text-lg text-safetyYellow">📊 현장 조율 인터랙티브 체크리스트</h3>
+                    <p class="text-xs text-slate-400 mt-1">발표 시 체크박스를 클릭하여 진행률을 연동해 시각화해 보세요.</p>
+                </div>
+                
+                <div class="p-6 space-y-8">
+                    <!-- 작업 전 -->
+                    <div>
+                        <h4 class="font-black text-amber-600 mb-3 flex items-center">
+                            <span class="mr-2">🏁</span> 작업 전 점검 사항
+                        </h4>
+                        <div class="space-y-2">
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>차량 통제를 위한 구체적 교통 처리 계획이 수립되어 승인받았는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>공사지점 1km, 500m 전방에 충분히 식별 가능한 예고 표지가 설치되었는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>작업 구역과 차선 분리용 방호차량(TMA)이 최후단 정지선에 고정 배치되었는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>지중 매설 가스관/고압선 위치 파악을 위해 시험 굴착을 수동 수행했는가?</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 작업 중 -->
+                    <div>
+                        <h4 class="font-black text-amber-600 mb-3 flex items-center">
+                            <span class="mr-2">⚙️</span> 작업 중 점검 사항
+                        </h4>
+                        <div class="space-y-2">
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>인증받은 전문 신호수가 통제선과 유도선 사이 정 위치에서 활동 중인가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>도로 작업 인력이 롤러 및 피니셔의 후방 사각 한계선 내에 진입하지 않는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>야간 조명 전력선 및 가이드 고휘도 LED 유도등이 꺼짐 없이 정상적으로 작동하는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>다짐 장비의 후진 경보 센서와 지능형 센싱 카메라 작동이 유지되고 있는가?</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 작업 후 -->
+                    <div>
+                        <h4 class="font-black text-amber-600 mb-3 flex items-center">
+                            <span class="mr-2">🏁</span> 작업 후 점검 사항
+                        </h4>
+                        <div class="space-y-2">
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>이용 운전자에게 혼동을 주지 않도록 임시 라바콘 및 유도 시설을 깨끗이 수거했는가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>기계 굴착으로 파놓은 매설 지장물 구역 복구 및 되메우기 흙 상태가 양호한가?</span>
+                            </label>
+                            <label class="flex items-start space-x-3 text-sm text-slate-700 cursor-pointer hover:bg-slate-50 p-2 rounded transition">
+                                <input type="checkbox" class="safety-checkbox mt-1 w-4 h-4 rounded border-slate-300 text-safetyOrange focus:ring-safetyOrange">
+                                <span>가동한 중장비를 통행 위험이 전혀 없는 야적 전용 공간으로 이동 배치했는가?</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 실시간 체크 진행 상태 연동용 JS 바 -->
+                <div class="bg-slate-100 p-4 border-t border-slate-200 flex items-center justify-between text-xs md:text-sm">
+                    <span class="font-bold text-roadBlack">실시간 수립 진행률:</span>
+                    <div class="w-2/3 bg-slate-300 rounded-full h-4 overflow-hidden mx-2 relative">
+                        <div id="progress-bar" class="bg-safetyOrange h-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                    <span id="progress-text" class="font-black text-safetyOrange">0%</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- [10. 결론 섹션] -->
+        <section id="conclusion" class="reveal bg-roadBlack text-white p-10 rounded-2xl border-b-8 border-safetyYellow scroll-mt-24">
+            <h2 class="text-3xl font-extrabold mb-6 text-safetyYellow">07. 종합 결론 및 제언</h2>
+            
+            <div class="space-y-6 text-base md:text-lg text-slate-200">
+                <p class="font-black border-l-4 border-safetyOrange pl-4 leading-relaxed">
+                    “도로 공사 재해 예방의 핵심은 작업자와 위험요인의 분리이다. 특히 도로 공사는 일반 차량과 건설장비가 동시에 존재하므로, 교통통제계획, 작업구역 분리, 장비 사각지대 관리, 야간 시인성 확보가 함께 이루어져야 한다.”
+                </p>
+                
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                    “도로 공사의 사고는 대부분 한 가지 원인만으로 발생하지 않습니다. 차량 통행, 장비 사각지대, 작업자 동선, 교통통제 미흡, 야간 시인성 부족 등 여러 위험요인이 복합적이고 동시적으로 작용합니다. 따라서 도로 공사의 안전관리는 작업 시작 전 사전 지반/지하 도면 매설물 탐사 단계부터 작업 종료 후 잔해물 정리 단계까지 연속적이고 촘촘하게 이루어지는 체계적 보증이 핵심 가치입니다.”
+                </p>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center text-xs md:text-sm text-slate-500">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-900 text-slate-500 py-8 text-center text-xs border-t border-slate-800">
+        <p class="mb-2">© 2026 Oh WonJoon. All rights reserved.</p>
+        <p>본 포트폴리오 및 분석 보고서는 오원준의 학교 학술 세미나 발표를 위해 최적화 설계된 단일 완성형 웹 자산입니다.</p>
+    </footer>
+
+    <!-- 자바스크립트 소스: 애니메이션 및 리스트 연동 기능 -->
+    <script>
+        // 스크롤 시 섹션 나타나기 효과 구현
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // 체크리스트 진행률 실시간 계산 기능
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.safety-checkbox');
+            const total = checkboxes.length;
+            let checkedCount = 0;
+            
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    checkedCount++;
+                }
+            });
+            
+            const percentage = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+            
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').innerText = percentage + '%';
+        }
+
+        // 이벤트 바인딩
+        window.addEventListener('scroll', revealElements);
+        window.addEventListener('load', () => {
+            revealElements();
+            document.querySelectorAll('.safety-checkbox').forEach(cb => {
+                cb.addEventListener('change', updateProgress);
+            });
+        });
+    </script>
+</body>
+</html>

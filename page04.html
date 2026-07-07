@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDEX NO.04 • BRIDGE CONSTRUCTION - 교량공사 안전가이드</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts 및 프리텐다드 서체 로드 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome 아이콘 로드 (경고 마크, 드롭다운 화살표 등 구현용) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+        body {
+            font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #f4f3ee; /* 원본의 차분하고 고급스러운 미색(웜그레이/베이지) 배경색 */
+        }
+        /* 미세한 커스텀 스타일링 */
+        .dot-accent {
+            width: 5px;
+            height: 5px;
+            background-color: #b91c1c;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 text-slate-800 antialiased flex flex-col items-center justify-center">
+
+<div class="w-full max-w-5xl bg-white rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-stone-200/50 overflow-hidden flex flex-col justify-between p-6 sm:p-10 md:p-14 min-h-[92vh] relative">
+
+    <div>
+        <header class="flex flex-col sm:flex-row justify-end items-start sm:items-center pb-8 border-b border-stone-200/80 gap-4">
+            <!-- Zero Disaster Guide Badge -->
+            <div class="flex items-center gap-2 bg-[#fdf5f5] text-[#9e2a2b] border border-[#f9e2e2] px-4 py-2.5 rounded-full self-stretch sm:self-auto justify-center">
+                <i class="fa-solid fa-shield-halved text-xs text-[#9e2a2b]"></i>
+                <span class="text-xs font-bold tracking-tight">건설현장 중대재해 Zero 실천 가이드</span>
+            </div>
+        </header>
+
+        <div class="mt-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pb-6">
+            <div>
+                <p class="text-[11px] font-bold text-[#9e2a2b] tracking-wider mb-2">INDEX NO.04 • BRIDGE CONSTRUCTION</p>
+                <h1 class="text-3xl md:text-4xl font-black text-stone-900 tracking-tight">교량공사</h1>
+            </div>
+            
+            <!-- Target Tags (거더 인양, 교량 상부, 가설장비) -->
+            <div class="flex flex-wrap gap-2 w-full md:w-auto">
+                <span class="flex items-center gap-1.5 bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold px-3 py-2 rounded-lg">
+                    <i class="fa-solid fa-tag text-[10px] text-stone-400"></i>
+                    거더 인양·낙하
+                </span>
+                <span class="flex items-center gap-1.5 bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold px-3 py-2 rounded-lg">
+                    <i class="fa-solid fa-tag text-[10px] text-stone-400"></i>
+                    교량 상부 추락
+                </span>
+                <span class="flex items-center gap-1.5 bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold px-3 py-2 rounded-lg">
+                    <i class="fa-solid fa-tag text-[10px] text-stone-400"></i>
+                    가설장비 전도
+                </span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <!-- Card 1 -->
+            <div class="bg-[#fafaf9] border border-stone-200/60 rounded-2xl p-5 hover:shadow-md transition duration-200">
+                <span class="text-xs font-bold text-[#b45309] block mb-1">대표 현장 · 시설물</span>
+                <p class="text-stone-800 font-bold text-[14.5px] leading-relaxed">교량 신설·확장, 고가도로, 교각·거더 시공</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-[#fafaf9] border border-stone-200/60 rounded-2xl p-5 hover:shadow-md transition duration-200">
+                <span class="text-xs font-bold text-[#b45309] block mb-1">사고 특성 예시</span>
+                <p class="text-stone-800 font-bold text-[14.5px] leading-relaxed">거더 인양·낙하, 교량 상부 추락, 가설장비 전도</p>
+            </div>
+        </div>
+
+        <div class="mt-4 bg-[#f0f4f8] border-l-[5px] border-[#2b6cb0] rounded-r-2xl p-5">
+            <p class="text-stone-700 text-sm md:text-[14.5px] leading-relaxed">
+                <strong class="text-[#1a365d] font-bold">공사 개요 —</strong> 교각·거더 시공 등 고소·중량물 작업이 결합된 공사. 거더 인양작업과 교량 상부 고소작업에서 낙하·추락재해가 주로 발생하며, 가설벤트 등 임시 구조물 전도 위험도 큼.
+            </p>
+        </div>
+
+        <div class="mt-10">
+            <h3 class="text-[15px] font-black text-[#9e2a2b] flex items-center gap-2 mb-5">
+                <span class="dot-accent"></span>
+                대표 재해사례
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- CASE 01 -->
+                <div class="border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 bg-white flex flex-col">
+                    <!-- Case Header -->
+                    <div class="bg-[#243042] text-white p-4 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-[#e53e3e] text-white text-[10px] font-black px-2 py-0.5 rounded-sm">CASE 01</span>
+                            <span class="font-bold text-sm md:text-base">거더 인양 중 낙하</span>
+                        </div>
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm"></i>
+                    </div>
+                    <!-- Case Content -->
+                    <div class="p-6 flex flex-col justify-between flex-grow gap-5">
+                        <div>
+                            <span class="text-[11.5px] font-bold text-[#b45309] block mb-1">발생상황</span>
+                            <p class="text-stone-700 text-xs md:text-[13px] leading-relaxed font-semibold">
+                                교량 상부구조 가설현장에서 대형 거더를 크레인 2대로 동시 인양하던 중 크레인 간 하중배분이 맞지 않아 거더가 기울며 낙하함.
+                            </p>
+                        </div>
+                        <div class="border-t border-dashed border-stone-200 pt-4">
+                            <span class="text-[11.5px] font-bold text-[#b45309] block mb-1">주요 원인</span>
+                            <p class="text-stone-700 text-xs md:text-[13px] leading-relaxed">
+                                다점 인양 하중배분 계획 미흡, 크레인 간 속도·높이 동조 실패, 인양 전 시뮬레이션 미실시
+                            </p>
+                        </div>
+                        <!-- Prevention Measures Box -->
+                        <div class="bg-[#f5f3ee] border border-stone-200/80 rounded-xl p-4 mt-auto">
+                            <span class="text-[11.5px] font-black text-stone-700 block mb-1">예방대책</span>
+                            <p class="text-stone-600 text-xs md:text-[13px] leading-relaxed">
+                                다점 인양 작업계획서 작성 및 사전 시뮬레이션, 크레인 간 무선통신 동조, 인양 구간 하부 전면 통제
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE 02 -->
+                <div class="border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 bg-white flex flex-col">
+                    <!-- Case Header -->
+                    <div class="bg-[#243042] text-white p-4 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-[#e53e3e] text-white text-[10px] font-black px-2 py-0.5 rounded-sm">CASE 02</span>
+                            <span class="font-bold text-sm md:text-base">교량 상부 작업 중 추락</span>
+                        </div>
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm"></i>
+                    </div>
+                    <!-- Case Content -->
+                    <div class="p-6 flex flex-col justify-between flex-grow gap-5">
+                        <div>
+                            <span class="text-[11.5px] font-bold text-[#b45309] block mb-1">발생상황</span>
+                            <p class="text-stone-700 text-xs md:text-[13px] leading-relaxed font-semibold">
+                                교량 슬래브 타설을 위한 거푸집 작업 중 안전난간이 없는 교량 측면에서 작업자가 발을 헛디뎌 하부로 추락함.
+                            </p>
+                        </div>
+                        <div class="border-t border-dashed border-stone-200 pt-4">
+                            <span class="text-[11.5px] font-bold text-[#b45309] block mb-1">주요 원인</span>
+                            <p class="text-stone-700 text-xs md:text-[13px] leading-relaxed">
+                                교량 측면 안전난간 미설치, 안전대 부착설비 미비, 고소작업 위험성평가 누락
+                            </p>
+                        </div>
+                        <!-- Prevention Measures Box -->
+                        <div class="bg-[#f5f3ee] border border-stone-200/80 rounded-xl p-4 mt-auto">
+                            <span class="text-[11.5px] font-black text-stone-700 block mb-1">예방대책</span>
+                            <p class="text-stone-600 text-xs md:text-[13px] leading-relaxed">
+                                교량 측면 전 구간 안전난간 설치, 안전대 부착설비 선행설치, 작업 전 위험성평가 및 TBM 실시
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <div class="bg-[#faf8f2] border border-stone-200/80 rounded-2xl p-6 sm:p-8">
+                <h4 class="text-[15.5px] font-extrabold text-stone-950 mb-5 pb-3 border-b border-stone-200/60">공사종류별 예방대책 요약</h4>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#d97706] text-xs mt-1 flex-shrink-0">▶</span>
+                        <p class="text-stone-900 font-bold text-sm sm:text-[15px] leading-tight">거더 등 대형 부재 다점인양 사전계획 및 시뮬레이션</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#d97706] text-xs mt-1 flex-shrink-0">▶</span>
+                        <p class="text-stone-900 font-bold text-sm sm:text-[15px] leading-tight">교량 측면·단부 안전난간 상시 설치</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#d97706] text-xs mt-1 flex-shrink-0">▶</span>
+                        <p class="text-stone-900 font-bold text-sm sm:text-[15px] leading-tight">가설벤트 등 임시구조물 구조검토 및 전도방지 조치</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#d97706] text-xs mt-1 flex-shrink-0">▶</span>
+                        <p class="text-stone-900 font-bold text-sm sm:text-[15px] leading-tight">인양구간 하부 통제 및 신호수 배치</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-12 pt-6 border-t border-stone-200/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div class="max-w-2xl text-[11px] text-stone-400 leading-relaxed space-y-2">
+            <p>
+                ※ 본 사례는 각 공사종류에서 반복적으로 보고되는 재해 유형을 학습 목적으로 일반화·재구성한 대표 사례입니다. 실제 현장 적용 시에는 산업안전보건공단 (KOSHA) 재해사례 및 관련 고시·기준을 함께 확인하시기 바랍니다.
+            </p>
+            <p>© 2026 건설안전 인터랙티브 가이드 시스템</p>
+        </div>
+        
+        <!-- 원본 대조 인터랙티브 모달 버튼 (image_5a7c22.jpg 매핑) -->
+        <button id="compare-btn" class="flex items-center gap-2 text-stone-500 hover:text-[#9e2a2b] font-bold text-xs transition duration-200 border border-stone-200 bg-stone-50 hover:bg-[#9e2a2b]/5 px-3 py-2.5 rounded-xl">
+            <i class="fa-solid fa-eye text-xs"></i>
+            원본 스펙 이미지('image_5a7c22.jpg') 대조하기
+        </button>
+    </footer>
+
+</div>
+
+<!-- image_5c22.jpg 원본 이미지와 1:1 대조가 가능한 백드롭 모달 레이어 -->
+<div id="compare-modal" class="hidden fixed inset-0 bg-stone-900/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center px-6 py-4 border-b border-stone-200">
+            <h3 class="font-bold text-stone-900 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-[#9e2a2b]"></i>
+                <span>원본 이미지 대조 ('image_5a7c22.jpg')</span>
+            </h3>
+            <button id="close-modal-btn" class="text-stone-400 hover:text-stone-600 p-2 rounded-lg hover:bg-stone-100 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <!-- Modal Body (Image Container) -->
+        <div class="p-6 overflow-y-auto flex-1 flex justify-center bg-stone-50">
+            <div class="relative max-w-full">
+                <!-- image_5a7c22.jpg 원본 이미지 렌더링 -->
+                <img src="image_5a7c22.jpg" alt="원본 스펙 이미지 (image_5a7c22.jpg)" class="max-h-[60vh] object-contain rounded-lg border border-stone-300 shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/800x800/efede7/9e2a2b?text=image_5a7c22.jpg+Loading+Failed';">
+            </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-4 border-t border-stone-200 flex justify-end">
+            <button id="close-modal-btn-bottom" class="bg-stone-900 hover:bg-stone-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition">닫기</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 원본 대조 모달 제어 로직
+    const compareBtn = document.getElementById('compare-btn');
+    const compareModal = document.getElementById('compare-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const closeModalBtnBottom = document.getElementById('close-modal-btn-bottom');
+
+    const openModal = () => {
+        compareModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // 부모 스크롤 잠금
+    };
+
+    const closeModal = () => {
+        compareModal.classList.add('hidden');
+        document.body.style.overflow = ''; // 부모 스크롤 해제
+    };
+
+    compareBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    closeModalBtnBottom.addEventListener('click', closeModal);
+
+    // 백드롭 영역 클릭 시 모달 닫기
+    compareModal.addEventListener('click', (e) => {
+        if (e.target === compareModal) {
+            closeModal();
+        }
+    });
+</script>
+
+</body>
+</html>

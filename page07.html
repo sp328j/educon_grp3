@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>항만·해양공사 안전 가이드</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: 본고딕(Noto Sans KR) 및 나눔명조 적용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #e5e2d9; /* 원본의 부드러운 베이지/웜그레이 배경색 */
+      color: #333333;
+    }
+    .myeongjo-title {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+    /* 패턴 배경 탑 바 */
+    .top-pattern {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        #b23b24,
+        #b23b24 4px,
+        #2b3441 4px,
+        #2b3441 8px
+      );
+      height: 8px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pb-12">
+
+  <!-- 최상단 데코레이션 스트라이프 패턴 -->
+  <div class="top-pattern"></div>
+
+  <!-- 메인 컨테이너 (최대 너비로 중앙 정렬 및 여백 확보) -->
+  <main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
+    
+    <!-- 헤더 영역 -->
+    <header class="flex flex-col md:flex-row md:justify-between md:items-end border-b border-gray-400 pb-5 mb-8">
+      <div>
+        <span class="text-xs font-bold text-red-700 tracking-widest block mb-2">INDEX NO.07 · PORT & MARINE WORKS</span>
+        <h1 class="text-3xl md:text-4xl font-black myeongjo-title text-[#222222] tracking-tight">
+          항만·해양공사
+        </h1>
+      </div>
+      <!-- 우측 상단 4가지 바로가기 태그 느낌의 버튼 구성 -->
+      <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+        <a href="#case1" class="px-3 py-1.5 bg-white border border-gray-400 text-xs text-[#444] hover:bg-gray-50 transition-colors shadow-sm">
+          익수
+        </a>
+        <a href="#case2" class="px-3 py-1.5 bg-white border border-gray-400 text-xs text-[#444] hover:bg-gray-50 transition-colors shadow-sm">
+          해상장비 사고
+        </a>
+        <a href="#case2" class="px-3 py-1.5 bg-white border border-gray-400 text-xs text-[#444] hover:bg-gray-50 transition-colors shadow-sm">
+          중량물 낙하
+        </a>
+        <a href="#summary" class="px-3 py-1.5 bg-white border border-gray-400 text-xs text-[#444] hover:bg-gray-50 transition-colors shadow-sm">
+          기상 악화 사고
+        </a>
+      </div>
+    </header>
+
+    <!-- 대표 현장 및 사고 특성 개요 구역 (2열 그리드) -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <!-- 대표 현장·시설물 -->
+      <div class="bg-[#eceae2] border-l-4 border-amber-700 p-5 shadow-sm rounded-r">
+        <h2 class="text-xs font-bold text-gray-500 mb-2">대표 현장·시설물</h2>
+        <p class="text-lg font-bold text-[#2a2a2a] myeongjo-title">부두, 방파제, 해상교량, 준설, 해상풍력 기반</p>
+      </div>
+      <!-- 사고 특성 예시 -->
+      <div class="bg-[#eceae2] border-l-4 border-red-700 p-5 shadow-sm rounded-r">
+        <h2 class="text-xs font-bold text-gray-500 mb-2">사고 특성 예시</h2>
+        <p class="text-lg font-bold text-[#2a2a2a] myeongjo-title">익수, 해상장비 사고, 중량물 낙하, 기상 악화 사고</p>
+      </div>
+    </section>
+
+    <!-- 공사 개요 (전체 너비 박스) -->
+    <section class="bg-[#f2f0e8] border-l-4 border-[#2b3441] p-6 mb-10 shadow-sm rounded-r">
+      <p class="text-base leading-relaxed text-[#333333]">
+        <strong class="text-lg font-extrabold text-[#111111] mr-2">공사 개요</strong>
+        <span class="text-gray-400 mx-1">|</span> 
+        해상·수상에서 이루어지는 공사로 익수 위험이 상존하며, 대형 해상크레인·준설선 등 특수장비 사용과 기상변화에 따른 돌발위험이 큰 공사.
+      </p>
+    </section>
+
+    <!-- 대표 재해사례 타이틀 -->
+    <section class="mb-6">
+      <h3 class="text-base font-bold text-[#444444] flex items-center gap-2">
+        <span>대표 재해사례</span>
+        <div class="h-px bg-gray-400 flex-grow"></div>
+      </h3>
+    </section>
+
+    <!-- 재해사례 세부 카드 (2열 배치) -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      
+      <!-- CASE 01 -->
+      <div id="case1" class="bg-[#f5f4ef] border border-gray-300 rounded overflow-hidden shadow-md flex flex-col justify-between">
+        <!-- 카드 상단 헤더 -->
+        <div class="bg-[#212a37] text-white px-4 py-3 flex items-center gap-3">
+          <span class="bg-[#e0533c] text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wide uppercase">CASE 01</span>
+          <h4 class="text-md font-bold tracking-tight">해상작업 중 익수</h4>
+        </div>
+        <!-- 카드 본문 -->
+        <div class="p-5 flex-grow flex flex-col justify-between">
+          <div>
+            <!-- 발생 상황 -->
+            <div class="mb-4">
+              <h5 class="text-xs font-bold text-blue-950 mb-1">발생 상황</h5>
+              <p class="text-[13px] text-gray-700 leading-relaxed">
+                방파제 케이슨 거치작업 중 구명조끼를 착용하지 않은 상태로 작업선에서 작업하다 파도가 높아지며 바다에 빠짐.
+              </p>
+            </div>
+            <!-- 주요 원인 -->
+            <div class="mb-4">
+              <h5 class="text-xs font-bold text-red-600 mb-1">주요 원인</h5>
+              <p class="text-[13px] text-gray-700 leading-relaxed">
+                구명조끼 미착용, 기상(파고·풍속) 확인 없이 작업 강행, 구조체계 미비
+              </p>
+            </div>
+          </div>
+          <!-- 예방 대책 -->
+          <div class="bg-[#eae7df] p-4 border-l-2 border-gray-500 rounded-r mt-2">
+            <span class="text-xs font-bold text-gray-600 block mb-1">예방대책</span>
+            <p class="text-[13px] text-gray-800 font-medium leading-relaxed">
+              해상작업시 구명조끼 착용 의무화, 작업 전 기상·해상상태 확인 및 기준 초과시 작업중지, 구조보트·구명장비 상시 배치
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 02 -->
+      <div id="case2" class="bg-[#f5f4ef] border border-gray-300 rounded overflow-hidden shadow-md flex flex-col justify-between">
+        <!-- 카드 상단 헤더 -->
+        <div class="bg-[#212a37] text-white px-4 py-3 flex items-center gap-3">
+          <span class="bg-[#e0533c] text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wide uppercase">CASE 02</span>
+          <h4 class="text-md font-bold tracking-tight">해상크레인 중량물 인양 중 낙하</h4>
+        </div>
+        <!-- 카드 본문 -->
+        <div class="p-5 flex-grow flex flex-col justify-between">
+          <div>
+            <!-- 발생 상황 -->
+            <div class="mb-4">
+              <h5 class="text-xs font-bold text-blue-950 mb-1">발생 상황</h5>
+              <p class="text-[13px] text-gray-700 leading-relaxed">
+                해상교량 케이슨 설치를 위해 대형 블록을 인양하던 중 파도에 의한 선체 동요로 슬링이 이탈하며 중량물이 낙하함.
+              </p>
+            </div>
+            <!-- 주요 원인 -->
+            <div class="mb-4">
+              <h5 class="text-xs font-bold text-red-600 mb-1">주요 원인</h5>
+              <p class="text-[13px] text-gray-700 leading-relaxed">
+                해상 동요 상태에서 인양작업 강행, 슬링 고정상태 미흡, 파고기준 초과 작업
+              </p>
+            </div>
+          </div>
+          <!-- 예방 대책 -->
+          <div class="bg-[#eae7df] p-4 border-l-2 border-gray-500 rounded-r mt-2">
+            <span class="text-xs font-bold text-gray-600 block mb-1">예방대책</span>
+            <p class="text-[13px] text-gray-800 font-medium leading-relaxed">
+              파고·풍속 기준 초과시 인양작업 중지, 슬링·고박상태 사전 점검, 해상크레인 작업계획서 수립 및 준수
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 공사종류별 예방대책 요약 -->
+    <section id="summary" class="mb-8">
+      <h3 class="text-base font-bold text-[#444444] flex items-center gap-2 mb-4">
+        <span>공사종류별 예방대책 요약</span>
+        <div class="h-px bg-gray-400 flex-grow"></div>
+      </h3>
+
+      <!-- 요약 리스트 박스 -->
+      <div class="bg-[#f0ede4] border border-gray-300 rounded p-6 shadow-sm">
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 pb-3 border-b border-gray-300 border-dashed last:border-b-0 last:pb-0">
+            <span class="text-amber-700 mt-1 text-xs">▶</span>
+            <p class="text-sm md:text-base font-medium text-[#2d2d2d]">해상작업시 구명조끼 등 개인보호구 착용 의무화</p>
+          </li>
+          <li class="flex items-start gap-3 pb-3 border-b border-gray-300 border-dashed last:border-b-0 last:pb-0">
+            <span class="text-amber-700 mt-1 text-xs">▶</span>
+            <p class="text-sm md:text-base font-medium text-[#2d2d2d]">작업 전 기상(파고·풍속) 확인 및 기준 초과시 작업중지</p>
+          </li>
+          <li class="flex items-start gap-3 pb-3 border-b border-gray-300 border-dashed last:border-b-0 last:pb-0">
+            <span class="text-amber-700 mt-1 text-xs">▶</span>
+            <p class="text-sm md:text-base font-medium text-[#2d2d2d]">구조보트·구명장비 상시 배치</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-700 mt-1 text-xs">▶</span>
+            <p class="text-sm md:text-base font-medium text-[#2d2d2d]">해상크레인 인양작업 사전계획 및 고박상태 점검</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 하단 유의사항 안내 문구 -->
+    <footer class="text-xs text-gray-500 leading-relaxed space-y-1 mt-12 border-t border-gray-400 pt-6">
+      <p>※ 본 사례는 각 공사종류에서 반복적으로 보고되는 재해 유형을 학습 목적으로 일반화·재구성한 대표 사례입니다.</p>
+      <p>실제 현장 적용 시에는 산업안전보건공단(KOSHA) 재해사례 및 관련 고시·기준을 함께 확인하시기 바랍니다.</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>

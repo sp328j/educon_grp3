@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>상하수도·지하매설물공사 재해사례</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E4E1D6;
+    --card:#F3F1E8;
+    --ink:#1A2530;
+    --steel:#3E5C74;
+    --amber:#D99A2B;
+    --amber-deep:#B5791C;
+    --red:#A5382A;
+    --line:#C7C2B2;
+    --line-soft:#D9D5C6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, rgba(26,37,48,0.025) 0px, rgba(26,37,48,0.025) 1px, transparent 1px, transparent 3px),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans KR', sans-serif;
+    min-height:100vh;
+  }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    border-bottom:3px solid var(--ink);
+    background:
+      linear-gradient(135deg, var(--amber) 0 10px, transparent 10px 20px) repeat-x,
+      var(--card);
+    background-size: 28px 6px;
+    background-position: bottom left;
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:40px;height:40px;flex:none;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--amber);
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .brand-text .t1{
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:20px; letter-spacing:0.5px;
+    line-height:1.1;
+  }
+  .brand-text .t2{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--steel); letter-spacing:1.5px;
+    text-transform:uppercase; margin-top:2px;
+  }
+  .top-stamp{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink);
+    border:1.5px solid var(--ink); padding:6px 12px;
+  }
+  .top-stamp b{color:var(--red);}
+
+  .main{max-width:960px; margin:0 auto; padding:30px 36px 60px;}
+
+  .case-head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:20px; flex-wrap:wrap;
+    border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:22px;
+  }
+  .case-head .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--red);
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; display:block;
+  }
+  .case-head h1{
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:34px; margin:0;
+    letter-spacing:0.3px;
+  }
+  .risk-chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    border:1.3px solid var(--ink); padding:5px 10px;
+    background:var(--card);
+  }
+
+  .meta-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+    margin-bottom:22px;
+  }
+  @media (max-width:700px){.meta-row{grid-template-columns:1fr;}}
+  .meta-box{
+    background:var(--card); border:1.5px solid var(--line);
+    border-left:5px solid var(--amber-deep);
+    padding:14px 18px; font-size:14px; line-height:1.7;
+  }
+  .meta-box.b2{border-left-color:var(--red);}
+  .meta-box .k{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--steel); display:block; margin-bottom:5px;
+  }
+
+  .overview{
+    background:var(--card);
+    border:1.5px solid var(--line);
+    border-left:5px solid var(--steel);
+    padding:18px 20px; margin-bottom:8px;
+    font-size:14.5px; line-height:1.75;
+  }
+  .overview b{color:var(--steel);}
+
+  .section-label{
+    font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--ink);
+    display:flex; align-items:center; gap:10px;
+    margin:26px 0 14px;
+  }
+  .section-label::after{
+    content:''; flex:1; height:1px; background:var(--line);
+  }
+
+  .cases{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:760px){.cases{grid-template-columns:1fr;}}
+
+  .case-card{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+  }
+  .case-card .cc-head{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 14px;
+    background:var(--ink); color:var(--bg);
+  }
+  .cc-num{
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    background:var(--red); color:#fff; padding:2px 7px;
+  }
+  .cc-title{font-family:'Oswald',sans-serif; font-size:15.5px; font-weight:500;}
+  .cc-body{padding:14px 16px 16px;}
+  .cc-row{margin-bottom:10px;}
+  .cc-row:last-child{margin-bottom:0;}
+  .cc-row .k{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1px;
+    color:var(--steel); text-transform:uppercase; display:block; margin-bottom:4px;
+  }
+  .cc-row .v{font-size:13.5px; line-height:1.65;}
+  .cc-row.cause .k{color:var(--red);}
+  .cc-row.prevent{
+    background:rgba(62,92,116,0.07);
+    padding:9px 10px; border-left:3px solid var(--steel);
+  }
+
+  .prevent-list{
+    background:var(--card); border:1.5px solid var(--line);
+    padding:16px 18px; margin-top:20px;
+  }
+  .prevent-list ul{margin:0; padding-left:0; list-style:none;}
+  .prevent-list li{
+    display:flex; gap:10px; padding:7px 0;
+    border-bottom:1px dashed var(--line-soft);
+    font-size:13.8px; line-height:1.6;
+  }
+  .prevent-list li:last-child{border-bottom:none;}
+  .prevent-list li::before{
+    content:'▸'; color:var(--amber-deep); font-weight:700; flex:none;
+  }
+
+  .foot-note{
+    margin-top:30px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:11.5px; color:var(--steel); font-family:'IBM Plex Mono',monospace;
+    line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">災</div>
+    <div class="brand-text">
+      <div class="t1">공사종류별 재해사례 조사</div>
+      <div class="t2">Construction Project Type Accident Case Index</div>
+    </div>
+  </div>
+  <div class="top-stamp">INDEX <b>09</b> / 10</div>
+</div>
+
+<div class="main">
+  <div class="case-head">
+    <div>
+      <span class="tag">INDEX NO.09 · Utility &amp; Underground Pipe Works</span>
+      <h1>상하수도·지하매설물공사</h1>
+    </div>
+    <div class="risk-chips">
+      <span class="chip">굴착면 붕괴</span>
+      <span class="chip">밀폐공간 질식</span>
+      <span class="chip">매설관 파손 사고</span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-box"><span class="k">대표 현장·시설물</span>상수도관, 하수관, 맨홀, 공동구, 관로</div>
+    <div class="meta-box b2"><span class="k">사고 특성 예시</span>굴착면 붕괴, 밀폐공간 질식, 매설관 파손 사고</div>
+  </div>
+
+  <div class="overview"><b>공사 개요</b> — 도심 협소구간에서 관로 매설을 위한 굴착과 맨홀·공동구 등 밀폐공간 작업이 반복되는 공사. 굴착면 붕괴와 밀폐공간 질식이 대표적 위험임.</div>
+
+  <div class="section-label">대표 재해사례</div>
+  <div class="cases">
+    <div class="case-card">
+      <div class="cc-head">
+        <span class="cc-num">CASE 01</span>
+        <span class="cc-title">관로 굴착면 붕괴</span>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row">
+          <span class="k">발생상황</span>
+          <span class="v">도심 하수관 교체를 위한 좁은 폭의 굴착구간에서 흙막이 없이 굴착하던 중 인접 지반이 붕괴되어 작업자가 매몰됨.</span>
+        </div>
+        <div class="cc-row cause">
+          <span class="k">주요 원인</span>
+          <span class="v">협소구간 흙막이 가시설 미설치, 굴착깊이 대비 안전조치 미흡, 인접 매설물 사전조사 부족</span>
+        </div>
+        <div class="cc-row prevent">
+          <span class="k">예방대책</span>
+          <span class="v">굴착깊이에 따른 흙막이 가시설 설치, 인접 매설물 사전조사 및 표시, 협소구간 표준 안전조치 적용</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="cc-head">
+        <span class="cc-num">CASE 02</span>
+        <span class="cc-title">맨홀 내부 작업 중 질식</span>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row">
+          <span class="k">발생상황</span>
+          <span class="v">하수관로 맨홀 내부 점검작업을 위해 진입하기 전 환기와 가스농도 측정을 하지 않아 작업자가 유해가스에 질식함.</span>
+        </div>
+        <div class="cc-row cause">
+          <span class="k">주요 원인</span>
+          <span class="v">밀폐공간 작업 전 환기·측정 절차 미준수, 감시인 미배치, 송기마스크 미지급</span>
+        </div>
+        <div class="cc-row prevent">
+          <span class="k">예방대책</span>
+          <span class="v">밀폐공간 출입 전 산소·유해가스 농도 측정 및 환기, 출입인원 통제 및 감시인 배치, 송기마스크 등 보호구 지급</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">예방대책 요약</div>
+  <div class="prevent-list">
+    <ul>
+      <li>굴착깊이 기준에 따른 흙막이 가시설 설치</li>
+      <li>밀폐공간(맨홀·공동구) 출입 전 가스농도 측정 및 환기</li>
+      <li>기존 매설물 사전조사 및 굴착 전 표시</li>
+      <li>협소구간 작업시 통행인·차량 통제</li>
+    </ul>
+  </div>
+
+  <div class="foot-note">
+    ※ 본 사례는 상하수도·지하매설물공사에서 반복적으로 보고되는 재해 유형을 학습 목적으로 일반화·재구성한 대표 사례입니다.<br>
+    실제 현장 적용 시에는 산업안전보건공단(KOSHA) 재해사례 및 관련 고시·기준을 함께 확인하시기 바랍니다.
+  </div>
+</div>
+
+</body>
+</html>

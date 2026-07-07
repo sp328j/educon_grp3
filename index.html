@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건설공종별 재해 사례 조사 홈페이지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#e7e3d7;
+      --card:#f7f4ec;
+      --ink:#17212b;
+      --muted:#5b6673;
+      --line:#c8c1b2;
+      --red:#a33a2b;
+      --amber:#d99a2b;
+      --steel:#2f526c;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      min-height:100vh;
+      font-family:'Noto Sans KR', system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(217,154,43,.25), transparent 32rem),
+        repeating-linear-gradient(0deg, rgba(23,33,43,.035) 0 1px, transparent 1px 4px),
+        var(--bg);
+    }
+    .warning-strip {
+      height:12px;
+      background:repeating-linear-gradient(-45deg, #d99a2b 0 18px, #17212b 18px 36px);
+      border-bottom:3px solid var(--ink);
+    }
+    .wrap { max-width:1180px; margin:0 auto; padding:34px 22px 60px; }
+    header {
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:end;
+      padding:28px;
+      border:2px solid var(--ink);
+      background:rgba(247,244,236,.88);
+      box-shadow:8px 8px 0 rgba(23,33,43,.13);
+    }
+    @media (max-width:820px) { header { grid-template-columns:1fr; } }
+    .eyebrow {
+      display:inline-block;
+      font-family:'Oswald', sans-serif;
+      letter-spacing:.18em;
+      color:var(--red);
+      font-size:13px;
+      margin-bottom:10px;
+    }
+    h1 {
+      margin:0;
+      font-family:'Oswald', 'Noto Sans KR', sans-serif;
+      font-size:clamp(36px, 6vw, 68px);
+      line-height:1.02;
+      letter-spacing:-.02em;
+    }
+    .lead { margin:18px 0 0; color:var(--muted); font-size:16px; line-height:1.75; }
+    .status-box {
+      background:var(--ink);
+      color:#fff;
+      padding:20px;
+      border-radius:2px;
+      border-left:8px solid var(--amber);
+    }
+    .status-box b { color:#ffd37a; }
+    .status-box p { margin:8px 0 0; color:#dfe6ec; line-height:1.65; font-size:14px; }
+    .toolbar {
+      margin:28px 0 20px;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+      border-bottom:3px solid var(--ink);
+      padding-bottom:14px;
+    }
+    .toolbar h2 { margin:0; font-size:20px; }
+    .badge {
+      font-family:'Oswald', sans-serif;
+      letter-spacing:.08em;
+      border:1.5px solid var(--ink);
+      background:var(--card);
+      padding:8px 12px;
+      font-size:12px;
+    }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width:1050px) { .grid { grid-template-columns:repeat(3, 1fr); } }
+    @media (max-width:680px) { .grid { grid-template-columns:1fr; } }
+    .case-card {
+      min-height:210px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      text-decoration:none;
+      color:var(--ink);
+      background:var(--card);
+      border:1.6px solid var(--line);
+      border-top:7px solid var(--steel);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .case-card::after {
+      content:'';
+      position:absolute;
+      width:100px; height:100px;
+      right:-55px; bottom:-55px;
+      border:18px solid rgba(163,58,43,.08);
+      border-radius:50%;
+    }
+    .case-card:hover {
+      transform:translateY(-5px);
+      box-shadow:7px 7px 0 rgba(23,33,43,.14);
+      border-color:var(--ink);
+    }
+    .case-no {
+      font-family:'Oswald', sans-serif;
+      color:var(--red);
+      font-size:13px;
+      letter-spacing:.08em;
+      margin-bottom:14px;
+    }
+    .case-card h3 { margin:0; font-size:21px; line-height:1.25; }
+    .case-card p { margin:12px 0 18px; color:var(--muted); font-size:13.5px; line-height:1.55; }
+    .open {
+      align-self:flex-start;
+      background:var(--ink);
+      color:#fff;
+      padding:8px 10px;
+      font-size:12px;
+      font-weight:700;
+      position:relative;
+      z-index:1;
+    }
+    footer {
+      margin-top:34px;
+      padding:18px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .bottom-panel {
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width:860px) { .bottom-panel { grid-template-columns:1fr; } }
+    .qr-card, .comment-board {
+      background:rgba(247,244,236,.92);
+      border:2px solid var(--ink);
+      box-shadow:6px 6px 0 rgba(23,33,43,.12);
+      padding:22px;
+    }
+    .panel-label {
+      font-family:'Oswald', sans-serif;
+      letter-spacing:.14em;
+      color:var(--red);
+      font-size:12px;
+      margin:0 0 8px;
+    }
+    .panel-title { margin:0 0 14px; font-size:22px; line-height:1.25; }
+    .qr-box {
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .qr-box img {
+      width:168px;
+      height:168px;
+      background:#fff;
+      border:1.5px solid var(--line);
+      padding:10px;
+      image-rendering:pixelated;
+    }
+    .qr-note { color:var(--muted); line-height:1.7; font-size:13.5px; margin:0; flex:1; min-width:190px; }
+    .qr-url {
+      margin-top:12px;
+      padding:10px 12px;
+      background:#fffdf8;
+      border:1px dashed var(--line);
+      color:var(--steel);
+      font-size:12px;
+      line-height:1.5;
+      word-break:break-all;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .comment-form {
+      display:grid;
+      grid-template-columns:160px 1fr auto;
+      gap:10px;
+      margin-top:14px;
+    }
+    @media (max-width:760px) { .comment-form { grid-template-columns:1fr; } }
+    .comment-form input, .comment-form textarea {
+      width:100%;
+      border:1.5px solid var(--line);
+      background:#fffdf8;
+      color:var(--ink);
+      padding:11px 12px;
+      font-family:inherit;
+      font-size:14px;
+      outline:none;
+    }
+    .comment-form textarea { min-height:46px; resize:vertical; }
+    .comment-form input:focus, .comment-form textarea:focus { border-color:var(--steel); }
+    .comment-form button, .clear-comments {
+      border:0;
+      background:var(--ink);
+      color:#fff;
+      padding:0 16px;
+      font-weight:800;
+      font-family:inherit;
+      cursor:pointer;
+    }
+    .comment-tools { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:14px; }
+    .comment-count { color:var(--muted); font-size:13px; }
+    .clear-comments { background:var(--red); padding:8px 11px; font-size:12px; }
+    .comment-list { list-style:none; margin:14px 0 0; padding:0; display:grid; gap:10px; }
+    .comment-item { background:#fffdf8; border:1px solid var(--line); padding:12px 14px; }
+    .comment-meta { display:flex; justify-content:space-between; gap:10px; margin-bottom:6px; color:var(--muted); font-size:12px; }
+    .comment-name { color:var(--steel); font-weight:800; }
+    .comment-text { margin:0; white-space:pre-wrap; line-height:1.65; font-size:14px; }
+    .empty-comments { margin:14px 0 0; padding:16px; border:1px dashed var(--line); color:var(--muted); background:#fffdf8; font-size:13.5px; }
+
+  </style>
+</head>
+<body>
+  <div class="warning-strip" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <div>
+        <span class="eyebrow">CONSTRUCTION ACCIDENT CASE INDEX</span>
+        <h1>건설공종별<br>재해 사례 조사</h1>
+        <p class="lead">공종별 대표 재해 사례와 사고 특성, 예방대책을 한 번에 확인할 수 있는 통합 인덱스 페이지입니다. 아래 1번부터 10번까지의 카드를 클릭하면 제공된 각 HTML 페이지로 이동합니다.</p>
+      </div>
+      <aside class="status-box">
+        <b>총 10개 공종 페이지 확인 가능</b>
+        <p>건축, 공동주택, 도로, 교량, 터널, 철도·도시철도, 항만·해양, 댐·하천, 상하수도·지하매설물, 플랜트·산업시설공사 페이지를 각각 연결했습니다.</p>
+      </aside>
+    </header>
+
+    <section class="toolbar" aria-labelledby="index-title">
+      <h2 id="index-title">공종별 바로가기</h2>
+      <span class="badge">INDEX 01–10</span>
+    </section>
+
+    <main class="grid">
+      
+        <a class="case-card" href="page01.html" aria-label="01 건축공사 페이지로 이동">
+          <div class="case-no">INDEX 01</div>
+          <h3>건축공사</h3>
+          <p>고소작업 추락 · 비계 붕괴 · 자재 낙하</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page02.html" aria-label="02 공동주택공사 페이지로 이동">
+          <div class="case-no">INDEX 02</div>
+          <h3>공동주택공사</h3>
+          <p>갱폼 인양 추락 · 피트 개구부 추락 · 가설비계 붕괴</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page03.html" aria-label="03 도로공사 페이지로 이동">
+          <div class="case-no">INDEX 03</div>
+          <h3>도로공사</h3>
+          <p>차량 충돌 · 포장장비 협착 · 야간작업 위험</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page04.html" aria-label="04 교량공사 페이지로 이동">
+          <div class="case-no">INDEX 04</div>
+          <h3>교량공사</h3>
+          <p>거더 인양·낙하 · 교량 상부 추락 · 가설장비 전도</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page05.html" aria-label="05 터널공사 페이지로 이동">
+          <div class="case-no">INDEX 05</div>
+          <h3>터널공사</h3>
+          <p>붕락 · 화재·폭발 · 장비 협착</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page06.html" aria-label="06 철도·도시철도공사 페이지로 이동">
+          <div class="case-no">INDEX 06</div>
+          <h3>철도·도시철도공사</h3>
+          <p>열차 충돌 · 감전 · 궤도장비 사고</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page07.html" aria-label="07 항만·해양공사 페이지로 이동">
+          <div class="case-no">INDEX 07</div>
+          <h3>항만·해양공사</h3>
+          <p>익수 · 해상장비 사고 · 중량물 낙하</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page08.html" aria-label="08 댐·하천공사 페이지로 이동">
+          <div class="case-no">INDEX 08</div>
+          <h3>댐·하천공사</h3>
+          <p>수위 급변 · 사면 붕괴 · 장비 전도</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page09.html" aria-label="09 상하수도·지하매설물공사 페이지로 이동">
+          <div class="case-no">INDEX 09</div>
+          <h3>상하수도·지하매설물공사</h3>
+          <p>굴착면 붕괴 · 질식 · 매설물 파손</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+
+        <a class="case-card" href="page10.html" aria-label="10 플랜트·산업시설공사 페이지로 이동">
+          <div class="case-no">INDEX 10</div>
+          <h3>플랜트·산업시설공사</h3>
+          <p>화재·폭발 · 밀폐공간 질식 · 중량물 사고</p>
+          <span class="open">사례 보기 →</span>
+        </a>
+    </main>
+
+
+    <section class="bottom-panel" aria-label="QR 코드 및 코멘트 게시판">
+      <article class="qr-card">
+        <p class="panel-label">MAIN PAGE QR</p>
+        <h2 class="panel-title">메인 화면 QR 코드</h2>
+        <div class="qr-box">
+          <img id="main-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoCAIAAABqyz8vAAAEQklEQVR4nO3dsY1dNxBAUa/hQtyAa3DtrsENuIANF9jUgVMzoEFieK1zQkH6+6R/wWBAzfv4/vr8CWp+nn4A+C+ES5JwSRIuScIlSbgkCZck4ZIkXJKES5JwSRIuScIlSbgkCZekX3b/wK+//X7jOY77688//vXXbz//7Z+7+vyV+ve14sQlSbgkCZck4ZIkXJKES5JwSdqe467szuFO2Z1T3n7O1fO8Nn+tfF8rTlyShEuScEkSLknCJUm4JAmXpGNz3JWpe6grr92LXX1Ofc56+/mduCQJlyThkiRckoRLknBJEi5J1+e4r7k9D56aN0/Nfac4cUkSLknCJUm4JAmXJOGSJFySfrg57m2357v8w4lLknBJEi5JwiVJuCQJlyThknR9jvva/HJ3znpqz8Cp+7X/1725u5y4JAmXJOGSJFyShEuScEkSLknH5ri354uv2Z2zTs1lV+rflxOXJOGSJFyShEuScEkSLknCJenj++tz+hmeMHVftnL/9TVOXJKES5JwSRIuScIlSbgkCZek7fu4p+6bVt4HNnWP9vbf69T3MtWDE5ck4ZIkXJKES5JwSRIuScIlaew9Z6fmoKfmwafmu6ecmh/f3u87dZ/YiUuScEkSLknCJUm4JAmXJOGStD3HnZrbvfber9t7cKfm06fmxLc7ceKSJFyShEuScEkSLknCJUm4JF3fq3B7f8LUfobdz9md7762t2HFfVzYIFyShEuScEkSLknCJUm4JI295+z2e8Wmfv/K1L7bXVN7jnc5cUkSLknCJUm4JAmXJOGSJFySju3HvX1/dGVqjviaqbnvLu8544cmXJKES5JwSRIuScIlSbgkbd/HndpHuzJ1T3Rqz8PUHonX7jc7cUkSLknCJUm4JAmXJOGSJFySxvYqrLy2f6Ayl939uSuvzWtXnLgkCZck4ZIkXJKES5JwSRIuScfec7Zrd563Oy889Tmv7R+Y+rmv7a9w4pIkXJKES5JwSRIuScIlSbgkPXcf97bKe9FWXvt8exVgg3BJEi5JwiVJuCQJlyThkjR2H/e2U3PNqX20p5yam772vTtxSRIuScIlSbgkCZck4ZIkXJK257grU//v/rV9t7s/97X3xt3+nFOcuCQJlyThkiRckoRLknBJEi5Jx+a4K1P7dG+ber/a1B7f1/ZLOHFJEi5JwiVJuCQJlyThkiRckq7Pcesq7/2aMvXv48QlSbgkCZck4ZIkXJKES5JwSfrh5ri398WuPuf2foOpPQ+3P2fFiUuScEkSLknCJUm4JAmXJOGSdH2O+9q91ak9ALf3ElTmxKc4cUkSLknCJUm4JAmXJOGSJFySjs1xb+9nPeXUPHXK7ee/PX89NS934pIkXJKES5JwSRIuScIlSbgkfXx/fU4/A2xz4pIkXJKES5JwSRIuScIlSbgkCZck4ZIkXJKES5JwSRIuScIlSbgk/Q2linY+avHkwwAAAABJRU5ErkJggg==" alt="메인 화면으로 이동하는 QR 코드">
+          <p class="qr-note">스마트폰 카메라로 QR 코드를 스캔하면 메인 인덱스 화면을 확인할 수 있습니다. 웹에 업로드한 뒤 열면 현재 접속 주소 기준 QR 코드로 표시됩니다.</p>
+        </div>
+        <div class="qr-url" id="qr-url">index.html</div>
+      </article>
+
+      <section class="comment-board" aria-labelledby="comment-title">
+        <p class="panel-label">FREE COMMENT BOARD</p>
+        <h2 class="panel-title" id="comment-title">자유 코멘트 게시판</h2>
+        <form class="comment-form" id="comment-form">
+          <input type="text" id="comment-name" maxlength="20" placeholder="이름" aria-label="이름">
+          <textarea id="comment-text" maxlength="500" placeholder="코멘트를 입력하세요" aria-label="코멘트 내용" required></textarea>
+          <button type="submit">등록</button>
+        </form>
+        <div class="comment-tools">
+          <span class="comment-count" id="comment-count">코멘트 0개</span>
+          <button type="button" class="clear-comments" id="clear-comments">전체 삭제</button>
+        </div>
+        <ul class="comment-list" id="comment-list"></ul>
+        <div class="empty-comments" id="empty-comments">아직 등록된 코멘트가 없습니다. 첫 의견을 남겨보세요.</div>
+      </section>
+    </section>
+
+    <footer>
+      <strong>사용 방법:</strong> 이 폴더의 <code>index.html</code>을 브라우저로 열면 메인 홈페이지가 표시됩니다. 각 카드는 같은 폴더 안의 <code>page01.html</code>부터 <code>page10.html</code>로 연결됩니다.
+    </footer>
+  </div>
+  <script>
+    (function(){
+      const qrImg = document.getElementById('main-qr');
+      const qrUrl = document.getElementById('qr-url');
+      const currentUrl = window.location.href;
+      if (location.protocol === 'http:' || location.protocol === 'https:') {
+        qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=12&data=' + encodeURIComponent(currentUrl);
+        qrUrl.textContent = currentUrl;
+      }
+
+      const storageKey = 'constructionAccidentComments_v1';
+      const form = document.getElementById('comment-form');
+      const nameInput = document.getElementById('comment-name');
+      const textInput = document.getElementById('comment-text');
+      const list = document.getElementById('comment-list');
+      const empty = document.getElementById('empty-comments');
+      const count = document.getElementById('comment-count');
+      const clearBtn = document.getElementById('clear-comments');
+
+      function escapeHtml(value) {
+        return value.replace(/[&<>'"]/g, function(ch) {
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]);
+        });
+      }
+      function loadComments() {
+        try { return JSON.parse(localStorage.getItem(storageKey)) || []; }
+        catch (e) { return []; }
+      }
+      function saveComments(comments) {
+        localStorage.setItem(storageKey, JSON.stringify(comments));
+      }
+      function renderComments() {
+        const comments = loadComments();
+        list.innerHTML = comments.map(function(item){
+          return '<li class="comment-item">'
+            + '<div class="comment-meta"><span class="comment-name">' + escapeHtml(item.name) + '</span><span>' + escapeHtml(item.date) + '</span></div>'
+            + '<p class="comment-text">' + escapeHtml(item.text) + '</p>'
+            + '</li>';
+        }).join('');
+        empty.style.display = comments.length ? 'none' : 'block';
+        count.textContent = '코멘트 ' + comments.length + '개';
+      }
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const text = textInput.value.trim();
+        if (!text) return;
+        const comments = loadComments();
+        comments.unshift({
+          name: nameInput.value.trim() || '익명',
+          text: text,
+          date: new Date().toLocaleString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })
+        });
+        saveComments(comments);
+        textInput.value = '';
+        renderComments();
+      });
+      clearBtn.addEventListener('click', function(){
+        if (confirm('등록된 코멘트를 모두 삭제할까요?')) {
+          localStorage.removeItem(storageKey);
+          renderComments();
+        }
+      });
+      renderComments();
+    })();
+  </script>
+
+</body>
+</html>

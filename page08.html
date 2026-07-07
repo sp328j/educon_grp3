@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>댐·하천공사 안전 가이드</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Malgun Gothic', sans-serif;
+        }
+
+        body {
+            background-color: #E2DFD2; /* 전체 베이지 톤 배경 */
+            color: #333;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 헤더 영역 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .title-area h2 {
+            font-size: 14px;
+            color: #8B7A66;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .title-area h1 {
+            font-size: 36px;
+            color: #1A2530;
+            font-weight: bold;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: #fff;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* 요약 카드 섹션 (상단 2개 박스) */
+        .summary-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary-box {
+            background-color: #F4F1EA;
+            border: 1px solid #C4C1B5;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 왼쪽 세로 포인트 선 */
+        .summary-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 4px;
+        }
+        .box-left::before { background-color: #C2A649; } /* 황동색 */
+        .box-right::before { background-color: #A94444; } /* 붉은색 */
+
+        .box-title {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .box-content {
+            font-size: 15px;
+            font-weight: bold;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+
+        /* 공사 개요 바 */
+        .overview-bar {
+            background-color: #EBF3F5;
+            border: 1px solid #B9C9CE;
+            padding: 18px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2C3E50;
+            margin-bottom: 40px;
+        }
+
+        .overview-bar strong {
+            color: #1A2530;
+            font-weight: bold;
+        }
+
+        /* 섹션 타이틀 공통 */
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: #C4C1B5;
+        }
+
+        /* 대표 재해 사례 (케이스 카드) */
+        .case-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .case-card {
+            background-color: #fff;
+            border: 1px solid #A0A0A0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-header {
+            background-color: #242D3C; /* 네이비 네모 */
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-badge {
+            background-color: #E06666;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .case-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .case-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .info-block {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #2980B9;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-label.red { color: #C0392B; }
+
+        .info-text {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* 예방대책 회색 박스 */
+        .measures-box {
+            background-color: #EDEFF1;
+            border: 1px solid #D1D5DB;
+            padding: 15px;
+            margin-top: 5px;
+        }
+
+        .measures-title {
+            font-size: 12px;
+            color: #7F8C8D;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        /* 하단 예방 대책 요약 리스트 */
+        .summary-list-box {
+            background-color: #F9F9F6;
+            border: 1px solid #D1CFC4;
+            padding: 25px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            padding: 12px 0;
+        }
+
+        .summary-item:not(:last-child) {
+            border-bottom: 1px dashed #D1CFC4;
+        }
+
+        .summary-item::before {
+            content: '▶';
+            color: #D3A23D;
+            font-size: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="title-area">
+            <h2>INDEX NO.08 · DAM & RIVER WORKS</h2>
+            <h1>댐·하천공사</h1>
+        </div>
+        <div class="tag-container">
+            <div class="tag">사면 붕괴</div>
+            <div class="tag">익수</div>
+            <div class="tag">장비 전도</div>
+            <div class="tag">급류·침수 사고</div>
+        </div>
+    </header>
+
+    <div class="summary-section">
+        <div class="summary-box box-left">
+            <div class="box-title">대표 현장·시설물</div>
+            <div class="box-content">댐, 제방, 하천정비, 수문, 보, 배수시설</div>
+        </div>
+        <div class="summary-box box-right">
+            <div class="box-title">사고 특성 예시</div>
+            <div class="box-content">사면 붕괴, 익수, 장비 전도, 급류·침수 사고</div>
+        </div>
+    </div>
+
+    <div class="overview-bar">
+        <strong>공사 개요 —</strong> 제방·사면 성토와 수중·수변 작업이 결합된 공사. 우기철 급류·침수에 따른 익수·매몰 위험과 대형 성토사면의 붕괴 위험이 특징적임.
+    </div>
+
+    <div class="section-title">대표 재해 사례</div>
+    
+    <div class="case-section">
+        <div class="case-card">
+            <div class="case-header">
+                <span class="case-badge">CASE 01</span>
+                <span class="case-title">제방 성토사면 붕괴</span>
+            </div>
+            <div class="case-body">
+                <div class="info-block">
+                    <div class="info-label">발생상황</div>
+                    <div class="info-text">하천 제방 성토작업 중 다짐관리가 미흡한 상태에서 강우가 겹쳐 사면 일부가 붕괴되며 작업 중이던 장비와 근로자가 매몰됨.</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label red">주요 원인</div>
+                    <div class="info-text">다짐도 관리 미흡, 배수시설 미비, 강우예보 대비 작업중지 기준 미운영</div>
+                </div>
+                <div class="measures-box">
+                    <div class="measures-title">예방대책</div>
+                    <div class="info-text">다짐도 기준 관리 및 시험시공, 사면 배수시설 확보, 강우예보시 작업 중지 기준 수립·운영</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <div class="case-header">
+                <span class="case-badge">CASE 02</span>
+                <span class="case-title">급류 발생으로 인한 익수</span>
+            </div>
+            <div class="case-body">
+                <div class="info-block">
+                    <div class="info-label">발생상황</div>
+                    <div class="info-text">하천 정비작업 중 상류 강우에 따른 급격한 유량증가를 인지하지 못하고 하천 내에서 작업을 계속하다 급류에 휩쓸림.</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label red">주요 원인</div>
+                    <div class="info-text">상류 강우상황 실시간 모니터링 미흡, 대피기준 미수립, 구명조끼 미착용</div>
+                </div>
+                <div class="measures-box">
+                    <div class="measures-title">예방대책</div>
+                    <div class="info-text">상류 강우·수위 실시간 모니터링 체계 구축, 수위 상승시 대피기준 및 경보체계 운영, 하천 내 작업시 구명조끼 착용</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">공사 종류별 예방 대책 요약</div>
+    
+    <div class="summary-list-box">
+        <div class="summary-item">성토사면 다짐도 관리 및 배수시설 확보</div>
+        <div class="summary-item">상류 강우·수위 실시간 모니터링 및 경보체계</div>
+        <div class="summary-item">하천·수변 작업시 구명조끼 착용 의무화</div>
+        <div class="summary-item">강우예보시 작업중지 기준 수립·운영</div>
+    </div>
+
+</div>
+
+</body>
+</html>

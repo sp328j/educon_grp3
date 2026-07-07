@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공동주택공사 재해사례 조사 시스템</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght=300;400;500;600;700;800&family=Share+Tech+Mono&family=Gothic+A1:wght=700;900&display=swap');
+        
+        :root {
+            --bg-color: #ebe7db;
+            --border-color: #2b2b2b;
+            --brick-red: #8e2511;
+            --light-cream: #f4f2eb;
+            --text-dark: #1d1d1d;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .hazard-stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                #f59e0b,
+                #f59e0b 10px,
+                #1e293b 10px,
+                #1e293b 20px
+            );
+        }
+
+        .industrial-border {
+            border: 1px solid var(--border-color);
+        }
+
+        .vintage-shadow {
+            box-shadow: 4px 4px 0px rgba(43, 43, 43, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col p-2 md:p-4 select-none">
+
+    <header class="w-full industrial-border bg-[#ebe7db] flex flex-col md:flex-row items-stretch justify-between relative mb-3">
+        <!-- 좌측 로고 영역 -->
+        <div class="flex items-center p-3 md:p-4 border-b md:border-b-0 md:border-r border-[#2b2b2b] bg-[#ebe7db]">
+            <div class="bg-[#8e2511] text-white p-2.5 rounded-sm flex items-center justify-center mr-3 border border-[#2b2b2b]">
+                <!-- 위험 불꽃 아이콘 (SVG) -->
+                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.629 3.54c-.161.86-.322 1.75-.459 2.544l-.157.893a1 1 0 01-.191.475A7.001 7.001 0 1018.8 8a1.002 1.002 0 00-.322-.912l-1.88-1.88a1 1 0 00-1.414 0l-.149.149a1.001 1.001 0 01-1.42 0l-1.22-1.22zM10 11a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-base md:text-xl tracking-tight leading-none text-[#1d1d1d] font-serif">공동주택공사 재해사례 조사</h1>
+                <p class="text-[10px] md:text-xs text-slate-600 mt-1 uppercase font-mono tracking-widest font-semibold">MULTI-FAMILY HOUSING CONSTRUCTION SAFETY INDEX</p>
+            </div>
+        </div>
+
+        <!-- 중앙 위험 사선 띠 장식 (image_59aaa5.jpg 테마 반영) -->
+        <div class="flex-grow hazard-stripes h-2 md:h-auto min-h-[16px] md:min-h-0 border-b md:border-b-0 md:border-r border-[#2b2b2b]"></div>
+
+        <!-- 우측 페이지 표시부 (단일 보고서 형태로 심플화) -->
+        <div class="flex items-center justify-between md:justify-end px-4 py-2 md:py-0 bg-[#f4f2eb] md:w-64">
+            <span class="text-xs font-mono font-bold text-slate-500 mr-4">REPORT INDEX</span>
+            <div class="flex items-center space-x-2">
+                <span class="text-xs font-mono bg-[#1d1d1d] text-white px-2 py-1 rounded-sm border border-[#2b2b2b]">INDEX</span>
+                <span class="text-lg font-bold font-mono text-[#8e2511]">01 / 01</span>
+                <span class="text-xs font-mono text-slate-500">CASE</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-full flex-grow flex flex-col justify-between">
+        
+        <!-- 메인 콘텐츠: 세부 내용 (전체 화면 너비 활용) -->
+        <main class="w-full flex flex-col justify-between">
+            <div class="bg-[#f4f2eb] industrial-border p-4 md:p-6 vintage-shadow flex-grow flex flex-col justify-between">
+                
+                <!-- 상단 타이틀 영역 -->
+                <div class="border-b-2 border-[#2b2b2b] pb-4 mb-5 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                    <div>
+                        <div class="text-xs font-mono font-bold text-slate-500 tracking-wider mb-1">
+                            INDEX NO.01 · MULTI-FAMILY HOUSING
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-extrabold text-[#1d1d1d] font-serif flex items-center">
+                            공동주택공사
+                        </h3>
+                    </div>
+                    <!-- 우측 분류 태그들 -->
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-[#2b2b2b] text-white text-[10px] md:text-xs font-mono px-2 py-1 uppercase rounded-sm border border-[#2b2b2b]">갱폼 인양 추락</span>
+                        <span class="bg-[#2b2b2b] text-white text-[10px] md:text-xs font-mono px-2 py-1 uppercase rounded-sm border border-[#2b2b2b]">피트 개구부 추락</span>
+                        <span class="bg-[#2b2b2b] text-white text-[10px] md:text-xs font-mono px-2 py-1 uppercase rounded-sm border border-[#2b2b2b]">가설비계 붕괴</span>
+                        <span class="bg-[#2b2b2b] text-white text-[10px] md:text-xs font-mono px-2 py-1 uppercase rounded-sm border border-[#2b2b2b]">낙하물 재해</span>
+                    </div>
+                </div>
+
+                <!-- 공사 분류별 핵심 개요 및 시설 요약 그리드 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-[#ebe7db] p-4 border-l-4 border-[#8e2511] industrial-border">
+                        <span class="text-xs font-extrabold text-[#8e2511] block mb-1">■ 대표 현장·시설물</span>
+                        <p class="text-sm font-bold text-[#1d1d1d]">아파트 단지, 주상복합, 연립·다세대 주택, 기숙사 시설</p>
+                    </div>
+                    <div class="bg-[#ebe7db] p-4 border-l-4 border-amber-600 industrial-border">
+                        <span class="text-xs font-extrabold text-amber-800 block mb-1">■ 대표 사고 특성 예시</span>
+                        <p class="text-sm font-bold text-[#1d1d1d]">갱폼 인양 중 추락, 엘리베이터 피트 추락, 마감비계 붕괴</p>
+                    </div>
+                </div>
+
+                <!-- 공사 개요 -->
+                <div class="bg-[#ebe7db] p-4 border-l-4 border-slate-700 industrial-border mb-6">
+                    <span class="text-xs font-extrabold text-slate-700 block mb-1">■ 공사 개요 및 위험성 특성</span>
+                    <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                        고층 공동 거주 시설물 건설을 주 목표로 하며, 반복적이고 정형화된 골조 공사(벽체, 슬래브)가 다층 구조로 연속 진행됩니다. 대형 가설 장비(타워크레인, 갱폼)의 사용 주기가 잦고 내외부 마감 공정에 많은 하도급 협력업체가 좁은 밀폐구간 내에서 동시 다발적으로 개입하므로 추락, 낙하, 질식 등의 위험이 공정 전 주기에 상존합니다.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="border-b border-[#2b2b2b] pb-2 mb-4 flex items-center justify-between">
+                        <h4 class="text-sm font-black text-[#1d1d1d] flex items-center">
+                            <span class="inline-block w-2.5 h-2.5 bg-[#8e2511] mr-1.5"></span>
+                            대표 재해사례분석 및 공정 예방법
+                        </h4>
+                        <span class="text-xs text-slate-500 font-mono">CASE 01 & CASE 02 ANALYSIS</span>
+                    </div>
+
+                    <!-- 사례 2구역 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- 사례 1 -->
+                        <div class="bg-[#f4f2eb] industrial-border flex flex-col justify-between overflow-hidden vintage-shadow">
+                            <div class="bg-[#1d1d1d] text-white px-3 py-2 border-b border-[#2b2b2b] flex items-center justify-between">
+                                <span class="text-[10px] bg-[#8e2511] text-white font-mono font-extrabold px-1.5 py-0.5 rounded-sm">CASE 01</span>
+                                <h5 class="text-xs md:text-sm font-black truncate max-w-[80%]">갱폼(Gang Form) 인양 작업 중 추락</h5>
+                            </div>
+                            <div class="p-3 md:p-4 space-y-3.5 text-xs">
+                                <div>
+                                    <span class="text-[#8e2511] font-extrabold block mb-1">● 발생상황</span>
+                                    <p class="text-slate-700 leading-relaxed font-semibold">아파트 18층 외벽 골조공사 중 타워크레인에 인양 고리를 연결하기 전에 갱폼 고정볼트를 조기 해체하는 과정에서, 강한 풍압에 의해 갱폼이 외벽에서 이격되며 상부 작업발판에 있던 작업자 2명이 함께 추락함.</p>
+                                </div>
+                                <div class="border-t border-[#e1dcce] pt-3">
+                                    <span class="text-amber-800 font-extrabold block mb-1">● 주요 원인</span>
+                                    <p class="text-slate-600 leading-relaxed">인양 장비 연결 상태 미확인 후 고정볼트 사전 해체, 신호수 배치 생략, 안전대 미체결 상태 작업 감행.</p>
+                                </div>
+                                <div class="border-t border-[#e1dcce] pt-3 bg-[#ebe7db] p-2.5 rounded-sm">
+                                    <span class="text-[#1d1d1d] font-extrabold block mb-1">✚ 실무 예방대책</span>
+                                    <p class="text-slate-700 leading-relaxed font-medium">타워크레인에 갱폼을 완전히 고정하여 장력이 가해진 상태에서만 볼트를 분리하는 '인양작업 표준지침(SOP)' 수립 및 이행, 작업 구간에 완전한 하부 구역 통제선 설치.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 사례 2 -->
+                        <div class="bg-[#f4f2eb] industrial-border flex flex-col justify-between overflow-hidden vintage-shadow">
+                            <div class="bg-[#1d1d1d] text-white px-3 py-2 border-b border-[#2b2b2b] flex items-center justify-between">
+                                <span class="text-[10px] bg-[#8e2511] text-white font-mono font-extrabold px-1.5 py-0.5 rounded-sm">CASE 02</span>
+                                <h5 class="text-xs md:text-sm font-black truncate max-w-[80%]">세대 내 엘리베이터 피트(Pit) 개구부 추락</h5>
+                            </div>
+                            <div class="p-3 md:p-4 space-y-3.5 text-xs">
+                                <div>
+                                    <span class="text-[#8e2511] font-extrabold block mb-1">● 발생상황</span>
+                                    <p class="text-slate-700 leading-relaxed font-semibold">승강기 피트 주변 가설 미장 작업을 위해 임시 안전난간을 적치 자재 이동용 통로 확보를 구실로 임의 철거한 뒤 조명이 확보되지 않은 상태에서 복도를 보행하던 하도급 도장공이 바닥 개구부 아래로 미끄러져 추락함.</p>
+                                </div>
+                                <div class="border-t border-[#e1dcce] pt-3">
+                                    <span class="text-amber-800 font-extrabold block mb-1">● 주요 원인</span>
+                                    <p class="text-slate-600 leading-relaxed">안전시설(승강강로 개구부 방호문) 무단 해체 후 즉시 복구 미흡, 조도 부족(야간/지하 작업장), 위험 표지판 미비.</p>
+                                </div>
+                                <div class="border-t border-[#e1dcce] pt-3 bg-[#ebe7db] p-2.5 rounded-sm">
+                                    <span class="text-[#1d1d1d] font-extrabold block mb-1">✚ 실무 예방대책</span>
+                                    <p class="text-slate-700 leading-relaxed font-medium">피트 전 구간 개구부에 분리가 불가능한 스크류 고정형 석쇠 철망 또는 견고한 도어 잠금장치 설치, 가설 통로 고조도 가설 LED 램프 설치 정례화.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-[#2b2b2b] flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 bg-[#ebe7db] p-2.5 rounded-sm industrial-border w-full md:w-auto">
+                        <span class="text-xs font-bold text-[#8e2511] flex items-center shrink-0">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                            자가진단 스코어
+                        </span>
+                        <div class="flex space-x-1.5 text-xs text-slate-600">
+                            <label class="flex items-center space-x-1 cursor-pointer">
+                                <input type="checkbox" id="check-1" class="accent-[#8e2511] h-3 w-3" onchange="calcComplianceScore()">
+                                <span>인양 전 볼트 해체금지</span>
+                            </label>
+                            <label class="flex items-center space-x-1 cursor-pointer">
+                                <input type="checkbox" id="check-2" class="accent-[#8e2511] h-3 w-3" onchange="calcComplianceScore()">
+                                <span>피트 덮개 고정식</span>
+                            </label>
+                            <label class="flex items-center space-x-1 cursor-pointer">
+                                <input type="checkbox" id="check-3" class="accent-[#8e2511] h-3 w-3" onchange="calcComplianceScore()">
+                                <span>가설조도 확보</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <div class="text-xs font-bold text-slate-700">
+                            품질안전 준수율: <span id="compliance-percentage" class="text-base font-mono font-black text-[#8e2511]">0%</span>
+                        </div>
+                        <button onclick="copyCaseReportToClipboard()" class="bg-[#1d1d1d] hover:bg-slate-800 transition-all text-white text-xs font-semibold px-4 py-2 rounded-sm border border-[#2b2b2b] vintage-shadow flex items-center">
+                            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                            </svg>
+                            분석 텍스트 복사
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- 토스트 메시지 팝업창 -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-[#1d1d1d] text-white text-xs px-4 py-3 rounded-sm border border-amber-500 shadow-lg flex items-center space-x-2 font-mono">
+        <span class="w-2 h-2 bg-amber-500 rounded-full animate-ping"></span>
+        <span id="toast-message">메시지</span>
+    </div>
+
+    <script>
+        // 준수율 점수 동적 연산
+        function calcComplianceScore() {
+            const checks = ["check-1", "check-2", "check-3"];
+            const checkedCount = checks.filter(id => document.getElementById(id).checked).length;
+            const score = Math.round((checkedCount / checks.length) * 100);
+            
+            const scoreEl = document.getElementById("compliance-percentage");
+            scoreEl.innerText = `${score}%`;
+
+            if (score === 100) {
+                scoreEl.className = "text-base font-mono font-black text-emerald-600 animate-bounce";
+            } else {
+                scoreEl.className = "text-base font-mono font-black text-[#8e2511]";
+            }
+        }
+
+        // 토스트 알림 디스플레이 제어
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // 현재 보고서 텍스트 클립보드 복사 유틸
+        function copyCaseReportToClipboard() {
+            let reportText = `[01. 공동주택공사 재해 분석 자료]\n`;
+            reportText += `개요: 고층 거주 목적의 공동주택을 시공하는 공사로, 철근콘크리트 골조 형성을 위해 갱폼(Gang Form)과 알폼(AL-Form) 등 대형 일체형 거푸집을 크레인으로 반복 인양하는 고위험 구간이 장기간 반복됩니다.\n`;
+            reportText += `대표 시설물: 아파트 단지, 주상복합 아파트, 연립주택, 다세대주택, 기숙사 시설\n`;
+            reportText += `사고 유형: 갱폼 조립·인양 중 추락, 엘리베이터 피트 내 추락, 낙하물 방지망 부실로 인한 자재 낙하\n\n`;
+            
+            reportText += `▶ CASE 01: 갱폼(Gang Form) 인양 작업 중 추락\n`;
+            reportText += `- 발생상황: 아파트 18층 외벽 골조공사 중 타워크레인에 인양 고리를 연결하기 전에 갱폼 고정볼트를 조기 해체하는 과정에서, 강한 풍압에 의해 갱폼이 외벽에서 이격되며 상부 작업발판에 있던 작업자 2명이 함께 추락함.\n`;
+            reportText += `- 주요원인: 인양 장비 연결 상태 미확인 후 고정볼트 사전 해체, 신호수 배치 생략, 안전대 미체결 상태 작업 감행.\n`;
+            reportText += `- 예방대책: 타워크레인에 갱폼을 완전히 고정하여 장력이 가해진 상태에서만 볼트를 분리하는 '인양작업 표준지침(SOP)' 수립 및 이행, 작업 구간에 완전한 하부 구역 통제선 설치.\n\n`;
+
+            reportText += `▶ CASE 02: 세대 내 엘리베이터 피트(Pit) 개구부 추락\n`;
+            reportText += `- 발생상황: 승강기 피트 주변 가설 미장 작업을 위해 임시 안전난간을 적치 자재 이동용 통로 확보를 구실로 임의 철거한 뒤 조명이 확보되지 않은 상태에서 복도를 보행하던 하도급 도장공이 바닥 개구부 아래로 미끄러져 추락함.\n`;
+            reportText += `- 주요원인: 안전시설(승강강로 개구부 방호문) 무단 해체 후 즉시 복구 미흡, 조도 부족(야간/지하 작업장), 위험 표지판 미비.\n`;
+            reportText += `- 예방대책: 피트 전 구간 개구부에 분리가 불가능한 스크류 고정형 석쇠 철망 또는 견고한 도어 잠금장치 설치, 가설 통로 고조도 가설 LED 램프 설치 정례화.\n`;
+
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = reportText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast(`[공동주택공사] 리포트 텍스트 복사 성공!`);
+            } catch (err) {
+                showToast("복사에 실패했습니다. 권한을 확인해주세요.");
+            }
+            
+            document.body.removeChild(tempTextArea);
+        }
+
+        window.onload = function() {
+            calcComplianceScore();
+        };
+    </script>
+</body>
+</html>

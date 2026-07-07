@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>공사종류별 재해사례 조사 - 터널공사</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E4E1D6;
+    --card:#F3F1E8;
+    --ink:#1A2530;
+    --steel:#3E5C74;
+    --steel-2:#5C7A93;
+    --amber:#D99A2B;
+    --amber-deep:#B5791C;
+    --red:#A5382A;
+    --line:#C7C2B2;
+    --line-soft:#D9D5C6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, rgba(26,37,48,0.025) 0px, rgba(26,37,48,0.025) 1px, transparent 1px, transparent 3px),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans KR', sans-serif;
+    min-height:100vh;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+  }
+
+  /* 헤더 영역 */
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  .header-title {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: 0;
+    color: var(--ink);
+  }
+  .chips-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .chip {
+    font-size: 13px;
+    font-weight: 500;
+    border: 1.5px solid var(--ink);
+    padding: 6px 14px;
+    background: var(--card);
+    border-radius: 4px;
+  }
+
+  /* 메타 박스 영역 */
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 768px) {
+    .meta-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  .meta-box {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-left: 6px solid var(--amber-deep);
+    padding: 16px 20px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    border-radius: 2px;
+  }
+  .meta-box.b2 {
+    border-left-color: var(--red);
+  }
+  .meta-box .k {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: var(--steel-2);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .meta-box .v {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+  }
+
+  /* 공사 개요 배너 */
+  .overview {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-left: 6px solid var(--steel);
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    font-size: 15.5px;
+    line-height: 1.8;
+    border-radius: 2px;
+  }
+  .overview b {
+    color: var(--steel);
+    font-weight: 900;
+  }
+
+  /* 섹션 구분 타이틀 */
+  .section-label {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    color: var(--steel);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 36px 0 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: var(--line);
+  }
+
+  /* 대표 재해사례 카드 */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 768px) {
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .case-card {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .cc-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--ink);
+    color: var(--card);
+  }
+  .cc-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--red);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+  .cc-title {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .cc-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cc-row .k {
+    font-size: 11.5px;
+    font-weight: bold;
+    color: var(--steel-2);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .cc-row .v {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .cc-row.cause .k {
+    color: var(--red);
+  }
+  .cc-row.prevent {
+    background: rgba(62, 92, 116, 0.06);
+    padding: 12px 16px;
+    border-left: 4.5px solid var(--steel);
+    border-radius: 2px;
+  }
+  .cc-row.prevent .k {
+    color: var(--steel);
+  }
+
+  /* 예방대책 요약 리스트 */
+  .prevent-box {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    padding: 24px 30px;
+    border-radius: 2px;
+  }
+  .prevent-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .prevent-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1.5px dashed var(--line-soft);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .prevent-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .prevent-list li:first-child {
+    padding-top: 0;
+  }
+  .prevent-list li::before {
+    content: '▸';
+    color: var(--amber-deep);
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* 푸터 영역 */
+  .foot-note {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--line);
+    font-size: 12px;
+    color: var(--steel-2);
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- 상단 타이틀 및 칩 영역 (image_5a0478.png 상단 디자인 반영) -->
+  <div class="header-row">
+    <h1 class="header-title">터널공사</h1>
+    <div class="chips-container">
+      <span class="chip">낙반·붕괴</span>
+      <span class="chip">장비 충돌</span>
+      <span class="chip">발파</span>
+      <span class="chip">질식</span>
+    </div>
+  </div>
+
+  <!-- 대표 현장 및 사고 특성 예시 요약 카드 -->
+  <div class="meta-row">
+    <div class="meta-box">
+      <span class="k">대표 현장 · 시설물</span>
+      <div class="v">NATM 터널, 철도터널, 지하차도, 지하연결통로</div>
+    </div>
+    <div class="meta-box b2">
+      <span class="k">사고 특성 예시</span>
+      <div class="v">낙반·붕괴, 장비 충돌, 발파, 질식</div>
+    </div>
+  </div>
+
+  <!-- 공사 개요 배너 -->
+  <div class="overview">
+    <b>공사 개요</b> — NATM 공법 등으로 지하를 굴착하는 밀폐·고위험 공사. 굴착면 지보 미흡에 따른 낙반·붕괴, 발파작업 관리 미흡, 갱내 환기 부족에 의한 질식재해가 대표적임.
+  </div>
+
+  <!-- 대표 재해사례 타이틀 및 본문 상세 카드 -->
+  <div class="section-label">대표 재해사례</div>
+  
+  <div class="cases-grid">
+    <!-- CASE 01 -->
+    <div class="case-card">
+      <div class="cc-head">
+        <span class="cc-num">CASE 01</span>
+        <span class="cc-title">굴착면 낙반</span>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row">
+          <span class="k">발생상황</span>
+          <div class="v">NATM 터널 굴착 중 지보재(숏크리트·록볼트) 시공이 지연된 구간에서 이완된 암반이 낙하하며 하부 작업자가 매몰됨.</div>
+        </div>
+        <div class="cc-row cause">
+          <span class="k">주요 원인</span>
+          <div class="v">지보 시공 지연, 지반등급 변화 미반영, 막장 전방 지질조사 소홀</div>
+        </div>
+        <div class="cc-row prevent">
+          <span class="k">예방대책</span>
+          <div class="v">굴착 직후 즉시 지보 시공(숏크리트·록볼트), 막장 전방 지질조사 및 지반등급 재평가, 이완암반 발견시 즉시 작업중지</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 02 -->
+    <div class="case-card">
+      <div class="cc-head">
+        <span class="cc-num">CASE 02</span>
+        <span class="cc-title">갱내 환기 부족으로 인한 질식</span>
+      </div>
+      <div class="cc-body">
+        <div class="cc-row">
+          <span class="k">발생상황</span>
+          <div class="v">발파 후 유해가스가 충분히 배출되지 않은 상태에서 환기 완료 확인 없이 작업자가 막장에 재진입하여 질식증상이 발생함.</div>
+        </div>
+        <div class="cc-row cause">
+          <span class="k">주요 원인</span>
+          <div class="v">발파 후 환기시간 미준수, 가스농도 측정 없이 재진입, 환기설비 용량 부족</div>
+        </div>
+        <div class="cc-row prevent">
+          <span class="k">예방대책</span>
+          <div class="v">발파 후 환기시간 및 가스농도 측정 기준 준수, 재진입 전 산소·유해가스 측정, 환기설비 용량 사전 검토</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 공사종류별 예방대책 요약 (image_5a077f.png 하단 디자인 반영) -->
+  <div class="section-label">공사종류별 예방대책 요약</div>
+  
+  <div class="prevent-box">
+    <ul class="prevent-list">
+      <li>굴착 직후 지보재 즉시 시공 및 지반등급 관리</li>
+      <li>발파작업 표준절차 및 대피 준수</li>
+      <li>갱내 환기설비 상시 가동 및 가스농도 측정</li>
+      <li>막장 전방 지질조사 및 이완암반 관리</li>
+    </ul>
+  </div>
+
+  <!-- 저작권 및 참조 푸터 -->
+  <div class="foot-note">
+    ※ 본 사례는 각 공사종류에서 반복적으로 보고되는 재해 유형을 학습 목적으로 일반화·재구성한 대표 사례입니다.<br>
+    실제 현장 적용 시에는 산업안전보건공단(KOSHA) 재해사례 및 관련 고시·기준을 함께 확인하시기 바랍니다.
+  </div>
+
+</div>
+
+</body>
+</html>
